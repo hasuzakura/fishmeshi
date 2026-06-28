@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>釣り飯ジェネレーター | 釣れた魚から料理を探す</title>
+  <meta name="description" content="釣れた魚の種類・場所・道具を選ぶだけで、今すぐ作れるレシピが見つかります。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">🎣</div>
+      <h1>釣り飯ジェネレーター</h1>
+      <p class="tagline">釣れた魚から、今夜の一品を見つけよう</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section class="step" id="step-1">
+        <div class="step-header">
+          <span class="step-badge">STEP 1</span>
+          <h2>どの魚が釣れた？</h2>
+        </div>
+        <div class="fish-grid" id="fish-grid"></div>
+      </section>
+
+      <section class="step hidden" id="step-2">
+        <div class="step-header">
+          <span class="step-badge">STEP 2</span>
+          <h2>どこで食べる？</h2>
+        </div>
+        <div class="option-grid" id="place-grid"></div>
+      </section>
+
+      <section class="step hidden" id="step-3">
+        <div class="step-header">
+          <span class="step-badge">STEP 3</span>
+          <h2>使える道具は？</h2>
+        </div>
+        <div class="option-grid" id="tool-grid"></div>
+      </section>
+
+      <section class="hidden" id="results">
+        <div class="results-header">
+          <h2>おすすめレシピ <span id="results-count"></span></h2>
+          <p id="results-subtitle"></p>
+        </div>
+        <div class="recipe-grid" id="recipe-grid"></div>
+        <button class="reset-btn" id="reset-btn">もう一度選び直す</button>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 釣り飯ジェネレーター</p>
+      <p class="footer-note">レシピはCookpadで確認できます</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
