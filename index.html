@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>釣り飯ジェネレーター | 釣れた魚から料理を探す</title>
-  <meta name="description" content="釣れた魚の種類・場所・道具を選ぶだけで、今すぐ作れるレシピが見つかります。">
+  <meta name="description" content="釣れた魚・場所・道具・手元の調味料を選ぶだけで、今すぐ作れるオリジナルレシピが見つかります。">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,12 +43,45 @@
         <div class="option-grid" id="tool-grid"></div>
       </section>
 
-      <section class="hidden" id="results">
-        <div class="results-header">
-          <h2>おすすめレシピ <span id="results-count"></span></h2>
-          <p id="results-subtitle"></p>
+      <section class="step hidden" id="step-4">
+        <div class="step-header">
+          <span class="step-badge">STEP 4</span>
+          <h2>手元にある調味料は？</h2>
+          <p class="step-sub">持っているものをすべて選んでください</p>
         </div>
-        <div class="recipe-grid" id="recipe-grid"></div>
+        <div class="seasoning-actions">
+          <button class="action-btn" onclick="selectAllSeasonings()">すべて選択</button>
+          <button class="action-btn secondary" onclick="clearSeasonings()">クリア</button>
+        </div>
+        <div class="seasoning-grid" id="seasoning-grid"></div>
+        <button class="generate-btn" id="generate-btn" onclick="showResults()">レシピを見る →</button>
+      </section>
+
+      <section class="hidden" id="results">
+        <p id="results-subtitle"></p>
+
+        <div id="can-cook-section" class="hidden">
+          <div class="results-section-header can-cook">
+            <span>✅ 今すぐ作れる！</span>
+            <span id="can-cook-count"></span>
+          </div>
+          <div id="can-cook-list"></div>
+        </div>
+
+        <div id="almost-section" class="hidden">
+          <div class="results-section-header almost">
+            <span>🛒 あと少しで作れる</span>
+            <span id="almost-count"></span>
+          </div>
+          <div id="almost-list"></div>
+        </div>
+
+        <div id="no-results" class="hidden">
+          <div class="no-results">
+            <p>この組み合わせのレシピは見つかりませんでした。<br>道具や場所を変えて試してみてください。</p>
+          </div>
+        </div>
+
         <button class="reset-btn" id="reset-btn">もう一度選び直す</button>
       </section>
 
@@ -58,7 +91,7 @@
   <footer>
     <div class="container">
       <p>© 2026 釣り飯ジェネレーター</p>
-      <p class="footer-note">レシピはCookpadで確認できます</p>
+      <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
     </div>
   </footer>
 
