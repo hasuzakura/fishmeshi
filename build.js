@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { FISH_LIST, RECIPES, AMAZON_BASE } = require("./data.js");
+const { FISH_LIST, RECIPES, AMAZON_BASE, FISHING_LOGS } = require("./data.js");
 
 const SITE_URL = "https://fishmeshi.com";
 const SITE_NAME = "釣り飯ジェネレーター";
@@ -53,7 +53,7 @@ function layout({ title, description, canonical, bodyHtml, structuredData }) {
     <div class="container">
       <p>© 2026 ${SITE_NAME}</p>
       <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
-      <p class="footer-note"><a href="/recipes/">レシピを全件見る（魚種別一覧）</a> ｜ <a href="/">魚から探すジェネレーターに戻る</a></p>
+      <p class="footer-note"><a href="/recipes/">レシピを全件見る（魚種別一覧）</a> ｜ <a href="/diary/">釣行記を読む</a> ｜ <a href="/">魚から探すジェネレーターに戻る</a></p>
     </div>
   </footer>
 </body>
@@ -196,6 +196,80 @@ function buildRecipesIndexPage() {
   return url;
 }
 
+function buildDiaryPage(log) {
+  const url = `${SITE_URL}/diary/${log.slug}/`;
+  const description = `${log.location}で${log.species}を釣った釣行記。${log.conditions}・${log.method}・${log.catchCount}。`;
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: log.title,
+    datePublished: log.date,
+    author: { "@type": "Person", name: "藤原" },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    description,
+    articleBody: log.body.join("\n"),
+  };
+
+  const body = `
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; <a href="/diary/">釣行記</a> &gt; ${log.title}</div>
+    <div class="detail-header">
+      <h1>${log.title}</h1>
+      <div class="recipe-meta">${log.date}｜${log.location}</div>
+      <div class="tag-row">
+        <span class="tag">${log.species}</span>
+        <span class="tag">${log.conditions}</span>
+        <span class="tag">${log.method}</span>
+        <span class="tag">${log.catchCount}</span>
+      </div>
+    </div>
+    <div class="detail-section">
+      ${log.body.map(p => `<p style="margin-bottom:12px;">${p}</p>`).join("")}
+    </div>
+    <div class="detail-section">
+      <h2>関連</h2>
+      <div class="amazon-links">
+        <a class="permalink" href="/diary/">他の釣行記を見る →</a>
+      </div>
+    </div>
+  `;
+
+  writeFile(`diary/${log.slug}/index.html`, layout({
+    title: `${log.title} - ${SITE_NAME}`,
+    description,
+    canonical: url,
+    bodyHtml: body,
+    structuredData,
+  }));
+
+  return url;
+}
+
+function buildDiaryIndexPage() {
+  const url = `${SITE_URL}/diary/`;
+  const description = "釣行の記録。いつ・どこで・何を釣ったか、実際の釣行エピソードを掲載しています。";
+
+  const body = `
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; 釣行記</div>
+    <div class="detail-header">
+      <h1>釣行記</h1>
+      <p class="step-sub">実際に釣りに行った記録です</p>
+    </div>
+    <div class="index-list">
+      ${FISHING_LOGS.map(log => `<a href="/diary/${log.slug}/">${log.title}（${log.date}）</a>`).join("")}
+    </div>
+  `;
+
+  writeFile("diary/index.html", layout({
+    title: `釣行記 - ${SITE_NAME}`,
+    description,
+    canonical: url,
+    bodyHtml: body,
+  }));
+
+  return url;
+}
+
 function buildSitemap(urls) {
   const entries = urls.map(u => `  <url><loc>${u}</loc></url>`).join("\n");
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -214,6 +288,11 @@ function main() {
   const urls = [`${SITE_URL}/`];
 
   urls.push(buildRecipesIndexPage());
+
+  urls.push(buildDiaryIndexPage());
+  FISHING_LOGS.forEach(log => {
+    urls.push(buildDiaryPage(log));
+  });
 
   FISH_LIST.forEach(fish => {
     urls.push(buildFishPage(fish));

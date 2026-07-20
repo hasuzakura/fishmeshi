@@ -924,6 +924,25 @@ const RECIPES = {
   ],
 };
 
+const FISHING_LOGS = [
+  {
+    slug: "asaka-garden-nijimasu",
+    title: "朝霞ガーデンで虹鱒釣り｜8時間で3匹、でも一番うれしかった一匹",
+    date: "2026-07-20",
+    location: "朝霞ガーデン（マス釣り堀）",
+    species: "虹鱒",
+    conditions: "晴れ・朝",
+    method: "スプーン",
+    catchCount: "3匹（8時間）",
+    body: [
+      "朝霞ガーデンは、虹鱒を放流したマス釣り堀。晴れた朝、道具箱に忍ばせたのはスプーンだけだった。",
+      "投げて、巻いて、また投げる。単調に見える動作の繰り返しだが、いつどこで魚がスプーンに食いつくか分からない緊張感がある。この日は朝から粘り続けて、結局8時間で釣れたのは3匹。数だけ見ればあまり褒められた釣果ではないかもしれない。",
+      "それでも一番うれしかったのは、最初に釣れた1匹だった。実はこのスプーン、生まれて初めて自分で選んで買ったルアーだった。売り場でどれにしようか迷いに迷って選んだ一本。それが実際に魚を連れてきてくれた瞬間は、数字以上の達成感があった。",
+      "虹鱒は身が締まっていて、塩焼きやムニエルにするとくせがなく食べやすい魚。釣り堀で放流されている個体は下処理さえ丁寧にすれば十分美味しく食べられる。次はもう少し数を伸ばして、色々な調理法を試してみたい。",
+    ],
+  },
+];
+
 if (typeof module !== "undefined") {
-  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, RECIPES };
+  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, RECIPES, FISHING_LOGS };
 }
