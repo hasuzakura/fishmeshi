@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, FISHING_LOGS } = require("./data.js");
+const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, ADSENSE_CLIENT, FISHING_LOGS } = require("./data.js");
 
 const SITE_URL = "https://fishmeshi.com";
 const SITE_NAME = "釣り飯ジェネレーター";
@@ -13,6 +13,11 @@ const OUT_DIR = __dirname;
 
 // Amazonアソシエイト・プログラムの規約で全ページへの掲載が義務づけられている表記
 const AMAZON_DISCLOSURE = `Amazonのアソシエイトとして、${SITE_NAME}は適格販売により収入を得ています。`;
+
+// AdSenseの広告タグ。data.js の ADSENSE_ENABLED が false の間は出力しない。
+const ADSENSE_TAG = ADSENSE_ENABLED
+  ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}" crossorigin="anonymous"></script>`
+  : "";
 
 function parseTimeToISO(timeStr) {
   const match = timeStr.match(/(\d+)分/);
@@ -40,6 +45,7 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonical}">
   <link rel="stylesheet" href="/style.css">
+  ${ADSENSE_TAG}
   ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ""}
 </head>
 <body>
@@ -596,6 +602,15 @@ function buildRobotsTxt() {
   writeFile("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 }
 
+// ads.txt：この広告枠を販売する権限を持つ事業者を宣言するファイル。
+// AdSenseの要求により、publisher IDを DIRECT で記載する。
+// 末尾の f08c47fec0942fa0 はGoogleの認証機関ID（全サイト共通の固定値）。
+function buildAdsTxt() {
+  if (!ADSENSE_ENABLED) return;
+  const pubId = ADSENSE_CLIENT.replace(/^ca-/, "");
+  writeFile("ads.txt", `google.com, ${pubId}, DIRECT, f08c47fec0942fa0\n`);
+}
+
 function main() {
   const urls = [`${SITE_URL}/`];
 
@@ -620,6 +635,7 @@ function main() {
 
   buildSitemap(urls);
   buildRobotsTxt();
+  buildAdsTxt();
 
   console.log(`生成完了: ${urls.length}件のURL（レシピページ・魚別一覧・全件一覧・釣行記・固定ページ・トップ）`);
 }

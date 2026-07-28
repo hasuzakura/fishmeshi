@@ -38,4 +38,12 @@ Vercel のプロジェクト設定（Environment Variables）に以下を登録�
 
 ## Google AdSense
 
-`data.js` の `ADSENSE_ENABLED` は、プライバシーポリシーの「広告について」の文面を切り替えるフラグ。**実際にAdSenseの配信を開始したタイミングで `true` にして `node build.js` を実行すること**（未導入の状態で「利用しています」と書かないための切り替え）。
+`data.js` の `ADSENSE_ENABLED` / `ADSENSE_CLIENT` で制御する。`ADSENSE_ENABLED` が `true` のとき、`node build.js` は以下を行う。
+
+- 生成する全ページの `<head>` に広告タグを挿入
+- `ads.txt` を生成（`google.com, pub-XXXX, DIRECT, f08c47fec0942fa0`）
+- プライバシーポリシーの「広告について」を、Cookie・第三者配信の説明を含む文面に切り替え
+
+**`index.html` だけは手書きのファイルなので、広告タグが自動反映されない。** `ADSENSE_CLIENT` を変更したときは `index.html` の `<head>` にある同じタグも手で直すこと。
+
+publisher ID: `ca-pub-7252742932766480`（2026-07-28 申請）
