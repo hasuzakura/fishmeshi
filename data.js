@@ -44,7 +44,7 @@ const SEASONINGS_LIST = [
 ];
 
 const AMAZON_BASE = "https://www.amazon.co.jp/s?k=";
-// TODO: Amazonアソシエイト承認後に &tag=XXXX を追記する
+const AMAZON_TAG = "fishmeshi-22";
 
 const RECIPES = {
   "アジ": [
@@ -944,5 +944,5 @@ const FISHING_LOGS = [
 ];
 
 if (typeof module !== "undefined") {
-  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, RECIPES, FISHING_LOGS };
+  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, AMAZON_TAG, RECIPES, FISHING_LOGS };
 }

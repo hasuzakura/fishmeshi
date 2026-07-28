@@ -4,7 +4,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { FISH_LIST, RECIPES, AMAZON_BASE, FISHING_LOGS } = require("./data.js");
+const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, FISHING_LOGS } = require("./data.js");
 
 const SITE_URL = "https://fishmeshi.com";
 const SITE_NAME = "釣り飯ジェネレーター";
@@ -82,7 +82,7 @@ function buildRecipePage(fish, recipe) {
 
   const amazonLinks = [...recipe.seasonings, ...recipe.tools]
     .filter(t => t !== "なんでもある")
-    .map(t => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(t + " 料理")}" target="_blank" rel="noopener noreferrer">🛒 ${t}</a>`)
+    .map(t => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(t + " 料理")}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">🛒 ${t}</a>`)
     .join("");
 
   const body = `

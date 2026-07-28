@@ -191,7 +191,7 @@ function buildRecipeCard(recipe) {
 function buildAlmostCard(recipe) {
   const missing = recipe.seasonings.filter(s => !selectedSeasonings.has(s));
   const amazonLinks = missing.map(s =>
-    `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(s + " 料理")}" target="_blank" rel="noopener noreferrer">🛒 ${s}</a>`
+    `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(s + " 料理")}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">🛒 ${s}</a>`
   ).join("");
 
   return `
