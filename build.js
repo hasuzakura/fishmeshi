@@ -344,6 +344,7 @@ function buildPrivacyPage() {
       <p>当サイトは、第三者配信の広告サービス「Google AdSense」を利用しています。</p>
       <p>Googleなどの第三者配信事業者は、Cookieを使用して、ユーザーが当サイトや他のサイトに過去にアクセスした際の情報に基づいて広告を配信します。</p>
       <p>Cookieを使用した広告のパーソナライズは、<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">広告設定</a>で無効にできます。また、<a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">www.aboutads.info</a>にアクセスすれば、第三者配信事業者のCookieを無効にできます。</p>
+      <p>欧州経済領域（EEA）・英国・スイスからアクセスされた場合は、Googleの同意管理プラットフォーム（CMP）による同意確認メッセージを表示し、広告目的でのCookie利用について同意・不同意を選択いただけるようにしています。日本国内からのアクセスではこのメッセージは表示されません。</p>
       <p>詳しくは<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Googleの広告に関するポリシー</a>をご確認ください。</p>
     `
     : `
