@@ -702,6 +702,54 @@ footer {
   color: var(--gray);
 }
 
+/* 解説記事（/guide/） */
+.guide-h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: 0;
+  text-transform: none;
+  margin-bottom: 12px;
+}
+
+.guide-steps {
+  margin: 0 0 12px 20px;
+  padding: 0;
+}
+
+.guide-steps li {
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+
+.guide-figure {
+  margin: 16px 0;
+  padding: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.guide-figure-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.guide-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+}
+
+.guide-figure figcaption {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
 /* お問い合わせフォーム */
 .contact-form { margin-top: 20px; }
 

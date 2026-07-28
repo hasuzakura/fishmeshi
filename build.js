@@ -4,7 +4,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, ADSENSE_CLIENT, FISHING_LOGS } = require("./data.js");
+const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, ADSENSE_CLIENT, FISHING_LOGS, GUIDES } = require("./data.js");
+const { FIGURES } = require("./figures.js");
 
 const SITE_URL = "https://fishmeshi.com";
 const SITE_NAME = "釣り飯ジェネレーター";
@@ -64,7 +65,7 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
     <div class="container">
       <p>© 2026 ${SITE_NAME}</p>
       <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
-      <p class="footer-note"><a href="/">魚から探す</a> ｜ <a href="/recipes/">レシピ一覧</a> ｜ <a href="/diary/">釣行記</a></p>
+      <p class="footer-note"><a href="/">魚から探す</a> ｜ <a href="/recipes/">レシピ一覧</a> ｜ <a href="/guide/">解説</a> ｜ <a href="/diary/">釣行記</a></p>
       <p class="footer-note"><a href="/about/">運営者情報</a> ｜ <a href="/privacy/">プライバシーポリシー</a> ｜ <a href="/disclaimer/">免責事項</a> ｜ <a href="/contact/">お問い合わせ</a></p>
       <p class="footer-note">${AMAZON_DISCLOSURE}</p>
     </div>
@@ -276,6 +277,123 @@ function buildDiaryIndexPage() {
 
   writeFile("diary/index.html", layout({
     title: `釣行記 - ${SITE_NAME}`,
+    description,
+    canonical: url,
+    bodyHtml: body,
+  }));
+
+  return url;
+}
+
+// 解説記事（/guide/）の本文要素をHTMLにする。
+// 文字列は段落、オブジェクトは list / steps / alert / svg / img のいずれか。
+function renderGuideBlock(block) {
+  if (typeof block === "string") return `<p>${block}</p>`;
+
+  if (block.list) {
+    return `<ul>${block.list.map(i => `<li>${i}</li>`).join("")}</ul>`;
+  }
+  if (block.steps) {
+    return `<ol class="guide-steps">${block.steps.map(i => `<li>${i}</li>`).join("")}</ol>`;
+  }
+  if (block.alert) {
+    return `<p class="legal-alert">${block.alert}</p>`;
+  }
+  if (block.svg) {
+    const fig = FIGURES[block.svg];
+    if (!fig) throw new Error(`figures.js に "${block.svg}" が定義されていません`);
+    return `<figure class="guide-figure">
+      <div class="guide-figure-svg">${fig.svg}</div>
+      <figcaption>${fig.caption}</figcaption>
+    </figure>`;
+  }
+  if (block.img) {
+    return `<figure class="guide-figure">
+      <img src="${block.img}" alt="${block.caption || ""}" loading="lazy">
+      ${block.caption ? `<figcaption>${block.caption}</figcaption>` : ""}
+    </figure>`;
+  }
+
+  throw new Error(`解釈できない本文要素です: ${JSON.stringify(block)}`);
+}
+
+function buildGuidePage(guide) {
+  const url = `${SITE_URL}/guide/${guide.slug}/`;
+  const relatedFish = FISH_LIST.find(f => f.name === guide.fish);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    datePublished: guide.date,
+    dateModified: guide.date,
+    author: { "@type": "Person", name: OPERATOR_NAME },
+    publisher: { "@type": "Organization", name: SITE_NAME },
+    description: guide.description,
+    mainEntityOfPage: url,
+  };
+
+  const sections = guide.sections.map(section => `
+    <div class="detail-section">
+      <h2 class="guide-h2">${section.h2}</h2>
+      <div class="legal-body">${section.body.map(renderGuideBlock).join("")}</div>
+    </div>
+  `).join("");
+
+  const related = relatedFish
+    ? `<div class="detail-section">
+        <h2>関連</h2>
+        <div class="index-list">
+          <a href="/fish/${relatedFish.slug}/">${relatedFish.name}のレシピ一覧を見る</a>
+          <a href="/guide/">他の解説記事を読む</a>
+        </div>
+      </div>`
+    : `<div class="detail-section">
+        <h2>関連</h2>
+        <div class="index-list"><a href="/guide/">他の解説記事を読む</a></div>
+      </div>`;
+
+  const body = `
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; <a href="/guide/">解説</a> &gt; ${guide.title}</div>
+    <div class="detail-header">
+      <h1>${guide.title}</h1>
+      <div class="recipe-meta">${guide.date}｜${OPERATOR_NAME}</div>
+    </div>
+    <div class="detail-section">
+      <div class="legal-body"><p>${guide.lead}</p></div>
+    </div>
+    ${sections}
+    ${related}
+  `;
+
+  writeFile(`guide/${guide.slug}/index.html`, layout({
+    title: `${guide.title} - ${SITE_NAME}`,
+    description: guide.description,
+    canonical: url,
+    bodyHtml: body,
+    structuredData,
+  }));
+
+  return url;
+}
+
+function buildGuideIndexPage() {
+  const url = `${SITE_URL}/guide/`;
+  const description = "魚の下処理・保存・持ち帰り方など、釣った魚を美味しく食べるための解説記事をまとめています。";
+
+  const body = `
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; 解説</div>
+    <div class="detail-header">
+      <h1>解説</h1>
+      <p class="step-sub">下処理・保存・持ち帰り方など、料理の前に知っておきたいこと</p>
+    </div>
+    <div class="index-list">
+      ${GUIDES.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
+    </div>
+  `;
+
+  writeFile("guide/index.html", layout({
+    title: `解説 - ${SITE_NAME}`,
     description,
     canonical: url,
     bodyHtml: body,
@@ -616,6 +734,11 @@ function main() {
   const urls = [`${SITE_URL}/`];
 
   urls.push(buildRecipesIndexPage());
+
+  urls.push(buildGuideIndexPage());
+  GUIDES.forEach(guide => {
+    urls.push(buildGuidePage(guide));
+  });
 
   urls.push(buildDiaryIndexPage());
   FISHING_LOGS.forEach(log => {
