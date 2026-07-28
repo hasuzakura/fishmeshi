@@ -46,6 +46,10 @@ const SEASONINGS_LIST = [
 const AMAZON_BASE = "https://www.amazon.co.jp/s?k=";
 const AMAZON_TAG = "fishmeshi-22";
 
+// Google AdSenseを実際に配信し始めたら true にして node build.js を実行すること。
+// プライバシーポリシーの「広告について」の文面が、未導入用から導入済み用に切り替わる。
+const ADSENSE_ENABLED = false;
+
 const RECIPES = {
   "アジ": [
     {
@@ -944,5 +948,5 @@ const FISHING_LOGS = [
 ];
 
 if (typeof module !== "undefined") {
-  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, AMAZON_TAG, RECIPES, FISHING_LOGS };
+  module.exports = { FISH_LIST, PLACES, TOOLS, SEASONINGS_LIST, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, RECIPES, FISHING_LOGS };
 }

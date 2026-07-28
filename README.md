@@ -9,4 +9,33 @@
 node build.js
 ```
 
-`recipe/`・`fish/`・`recipes/`・`sitemap.xml`・`robots.txt` が再生成される。生成物はgit管理下に置き、コミットしてデプロイする（Vercelはビルドコマンドを持たない静的サイトのため、生成済みファイルがそのまま配信される）。
+`recipe/`・`fish/`・`recipes/`・`diary/`・`about/`・`privacy/`・`disclaimer/`・`contact/`・`sitemap.xml`・`robots.txt` が再生成される。生成物はgit管理下に置き、コミットしてデプロイする（Vercelはビルドコマンドを持たない静的サイトのため、生成済みファイルがそのまま配信される）。
+
+## デプロイ手順
+
+```
+node build.js
+git add -A && git commit -m "..."
+git push
+vercel --prod --yes
+```
+
+## お問い合わせフォーム
+
+`/contact/` のフォームは `api/contact.js`（Vercel Serverless Function）が受け、Resend の API 経由で運営者宛にメールを送る。依存パッケージはなく、Node.js のグローバル `fetch` のみを使用。
+
+Vercel のプロジェクト設定（Environment Variables）に以下を登録すること。未設定の場合、フォームは「現在お問い合わせを受け付けられません」と表示して送信を受け付けない。
+
+| 変数名 | 内容 |
+|---|---|
+| `RESEND_API_KEY` | Resend の API キー（必須） |
+| `CONTACT_TO` | 通知の宛先メールアドレス（必須） |
+| `CONTACT_FROM` | 送信元。省略時は `onboarding@resend.dev` |
+
+`onboarding@resend.dev` は独自ドメインの認証なしで使える既定の送信元だが、**宛先が Resend アカウント所有者のアドレスに限定される**。運営者への通知用途ならこれで足りる。fishmeshi.com を送信元にしたい場合は Resend でドメイン認証（DNSレコード追加）を行い、`CONTACT_FROM` を設定する。
+
+スパム対策として、ボットだけが埋める隠しフィールド（ハニーポット）、フォーム表示から3秒未満の送信の拒否、同一IPからの1分あたり3件の制限を実装している。
+
+## Google AdSense
+
+`data.js` の `ADSENSE_ENABLED` は、プライバシーポリシーの「広告について」の文面を切り替えるフラグ。**実際にAdSenseの配信を開始したタイミングで `true` にして `node build.js` を実行すること**（未導入の状態で「利用しています」と書かないための切り替え）。

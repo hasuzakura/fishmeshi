@@ -654,3 +654,135 @@ footer {
   font-weight: 700;
   color: var(--white);
 }
+
+/* 固定ページ本文（運営者情報・プライバシーポリシー・免責事項） */
+.legal-body {
+  font-size: 14px;
+  color: var(--gray-dark);
+}
+
+.legal-body p { margin-bottom: 12px; }
+.legal-body p:last-child { margin-bottom: 0; }
+.legal-body strong { color: var(--black); font-weight: 700; }
+
+.legal-body a {
+  color: var(--black);
+  text-decoration: underline;
+}
+
+.legal-body ul {
+  margin: 0 0 12px 18px;
+}
+
+.legal-body li { margin-bottom: 8px; }
+
+.legal-dl {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 8px 12px;
+}
+
+.legal-dl dt {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.legal-alert {
+  background: var(--bg);
+  border-left: 3px solid var(--black);
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--black);
+}
+
+.legal-meta {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* お問い合わせフォーム */
+.contact-form { margin-top: 20px; }
+
+.form-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gray);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.form-required {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 10px;
+  letter-spacing: 0;
+  color: var(--gray-dark);
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--black);
+  transition: border-color 0.15s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--black);
+}
+
+.form-textarea { resize: vertical; line-height: 1.6; }
+
+/* ボットだけが入力する隠しフィールド（スパム対策） */
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--black);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.form-submit:hover { opacity: 0.85; }
+
+.form-submit:disabled {
+  background: var(--gray-light);
+  cursor: not-allowed;
+}
+
+.form-status {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 20px;
+}
+
+.form-status.is-error { color: #b00020; }
+.form-status.is-success { color: #1a7f37; }

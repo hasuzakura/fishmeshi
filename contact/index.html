@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ - 釣り飯ジェネレーター</title>
+  <meta name="description" content="釣り飯ジェネレーターへのお問い合わせフォーム。レシピや掲載内容へのご意見、権利関係のご連絡はこちらからお願いします。">
+  <link rel="canonical" href="https://fishmeshi.com/contact/">
+  
+  <meta property="og:title" content="お問い合わせ - 釣り飯ジェネレーター">
+  <meta property="og:description" content="釣り飯ジェネレーターへのお問い合わせフォーム。レシピや掲載内容へのご意見、権利関係のご連絡はこちらからお願いします。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fishmeshi.com/contact/">
+  <link rel="stylesheet" href="/style.css">
+  
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="site-title"><a href="/" style="color:inherit;text-decoration:none;">釣り飯ジェネレーター</a></p>
+      <p class="tagline">釣れた魚から、今夜の一品を見つけよう</p>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; お問い合わせ</div>
+    <div class="detail-header">
+      <h1>お問い合わせ</h1>
+      <p class="step-sub">ご意見・ご指摘・掲載内容に関するご連絡はこちらから</p>
+    </div>
+    <div class="detail-section">
+      <div class="legal-body">
+        <p>レシピの内容に関するご指摘、掲載写真や文章の権利に関するご連絡、その他のお問い合わせを受け付けています。いただいた内容は運営者本人が確認します。</p>
+        <p>返信が必要な場合は、メールアドレスをお間違えのないようご入力ください。内容によっては返信までお時間をいただくこと、また返信いたしかねる場合があります。</p>
+        <p>ご入力いただいた情報の取り扱いについては、<a href="/privacy/">プライバシーポリシー</a>をご確認ください。</p>
+      </div>
+      <form id="contact-form" class="contact-form" novalidate>
+        <label class="form-label" for="cf-name">お名前 <span class="form-required">必須</span></label>
+        <input class="form-input" type="text" id="cf-name" name="name" maxlength="100" required autocomplete="name">
+
+        <label class="form-label" for="cf-email">メールアドレス <span class="form-required">必須</span></label>
+        <input class="form-input" type="email" id="cf-email" name="email" maxlength="200" required autocomplete="email">
+
+        <label class="form-label" for="cf-message">お問い合わせ内容 <span class="form-required">必須</span></label>
+        <textarea class="form-input form-textarea" id="cf-message" name="message" rows="8" maxlength="2000" required></textarea>
+
+        <div class="form-honeypot" aria-hidden="true">
+          <label for="cf-website">このらんは くうはくの ままに してください</label>
+          <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <button class="form-submit" type="submit" id="cf-submit">送信する</button>
+        <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>© 2026 釣り飯ジェネレーター</p>
+      <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
+      <p class="footer-note"><a href="/">魚から探す</a> ｜ <a href="/recipes/">レシピ一覧</a> ｜ <a href="/diary/">釣行記</a></p>
+      <p class="footer-note"><a href="/about/">運営者情報</a> ｜ <a href="/privacy/">プライバシーポリシー</a> ｜ <a href="/disclaimer/">免責事項</a> ｜ <a href="/contact/">お問い合わせ</a></p>
+      <p class="footer-note">Amazonのアソシエイトとして、釣り飯ジェネレーターは適格販売により収入を得ています。</p>
+    </div>
+  </footer>
+  <script>
+(function () {
+  var form = document.getElementById("contact-form");
+  var button = document.getElementById("cf-submit");
+  var status = document.getElementById("cf-status");
+  var loadedAt = Date.now();
+
+  function setStatus(text, kind) {
+    status.textContent = text;
+    status.className = "form-status" + (kind ? " is-" + kind : "");
+  }
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var message = form.message.value.trim();
+
+    if (!name || !email || !message) {
+      setStatus("お名前・メールアドレス・お問い合わせ内容をすべてご入力ください。", "error");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setStatus("メールアドレスの形式をご確認ください。", "error");
+      return;
+    }
+    if (message.length < 10) {
+      setStatus("お問い合わせ内容は10文字以上でご入力ください。", "error");
+      return;
+    }
+
+    button.disabled = true;
+    setStatus("送信しています…", "");
+
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message,
+        website: form.website.value,
+        elapsed: Date.now() - loadedAt
+      })
+    })
+      .then(function (res) {
+        return res.json().then(function (data) {
+          return { ok: res.ok, data: data };
+        });
+      })
+      .then(function (result) {
+        if (result.ok) {
+          form.reset();
+          setStatus("送信しました。お問い合わせありがとうございます。", "success");
+        } else {
+          button.disabled = false;
+          setStatus(result.data && result.data.error ? result.data.error : "送信に失敗しました。時間をおいて再度お試しください。", "error");
+        }
+      })
+      .catch(function () {
+        button.disabled = false;
+        setStatus("送信に失敗しました。通信環境をご確認のうえ、再度お試しください。", "error");
+      });
+  });
+})();
+</script>
+</body>
+</html>
