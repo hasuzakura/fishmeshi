@@ -97,7 +97,7 @@ function buildRecipePage(fish, recipe) {
 
   const amazonLinks = [...recipe.seasonings, ...recipe.tools]
     .filter(t => t !== "なんでもある")
-    .map(t => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(t + " 料理")}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">🛒 ${t}</a>`)
+    .map(t => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(t + " 料理")}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">${t}</a>`)
     .join("");
 
   const body = `
@@ -125,7 +125,7 @@ function buildRecipePage(fish, recipe) {
         ${recipe.steps.map(s => `<li>${s}</li>`).join("")}
       </ol>
     </div>
-    ${amazonLinks ? `<div class="detail-section"><h2>この料理に使う調味料・道具</h2><div class="amazon-links">${amazonLinks}</div></div>` : ""}
+    ${amazonLinks ? `<div class="detail-section"><h2>この料理に使う調味料・道具</h2><div class="amazon-links">${amazonLinks}</div><p class="amazon-note">Amazonの検索結果が新しいタブで開きます</p></div>` : ""}
     <div class="detail-section">
       <h2>関連</h2>
       <div class="amazon-links">
@@ -150,6 +150,17 @@ function buildFishPage(fish) {
   const url = `${SITE_URL}/fish/${fish.slug}/`;
   const description = `${fish.name}で作れるレシピ${recipes.length}件。刺身・塩焼き・揚げ物など、釣れた${fish.name}をすぐ料理できるレシピ一覧。`;
 
+  // この魚を釣った釣行記があれば相互に行き来できるようにする。
+  const logs = FISHING_LOGS.filter(l => l.fish === fish.name);
+  const logSection = logs.length
+    ? `<div class="detail-section">
+        <h2>この魚の釣行記</h2>
+        <div class="index-list">
+          ${logs.map(l => `<a href="/diary/${l.slug}/">${l.title}</a>`).join("")}
+        </div>
+      </div>`
+    : "";
+
   const body = `
     <div class="breadcrumb"><a href="/">トップ</a> &gt; ${fish.name}のレシピ一覧</div>
     <div class="detail-photo" style="background-image:url('${fish.photo}')"></div>
@@ -159,6 +170,7 @@ function buildFishPage(fish) {
     <div class="index-list">
       ${recipes.map(r => `<a href="/recipe/${fish.slug}-${r.slug}/">${r.name}（${r.time}）</a>`).join("")}
     </div>
+    ${logSection}
   `;
 
   writeFile(`fish/${fish.slug}/index.html`, layout({
@@ -226,6 +238,35 @@ function buildDiaryPage(log) {
     articleBody: log.body.join("\n"),
   };
 
+  // log.fish（FISH_LISTのname）が指定されていれば、その魚のレシピを個別に並べる。
+  // 「釣った→食べる」がこのサイトの導線なので、一覧ページ経由にせず直接レシピへ飛ばす。
+  const logFish = FISH_LIST.find(f => f.name === log.fish);
+  const logRecipes = logFish ? (RECIPES[logFish.name] || []) : [];
+  const cookSection = logRecipes.length
+    ? `<div class="detail-section">
+        <h2>釣った${logFish.name}を食べる</h2>
+        <div class="index-list">
+          ${logRecipes.map(r => `<a href="/recipe/${logFish.slug}-${r.slug}/">${r.name}（${r.time}）</a>`).join("")}
+        </div>
+        <div class="amazon-links">
+          <a class="permalink" href="/fish/${logFish.slug}/">${logFish.name}のレシピ一覧を見る →</a>
+        </div>
+      </div>`
+    : "";
+
+  // log.guides に解説記事のslugを並べておくと、下処理の導線を張れる。
+  const logGuides = (log.guides || [])
+    .map(slug => GUIDES.find(g => g.slug === slug))
+    .filter(Boolean);
+  const guideSection = logGuides.length
+    ? `<div class="detail-section">
+        <h2>持ち帰り方・下処理</h2>
+        <div class="index-list">
+          ${logGuides.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
+        </div>
+      </div>`
+    : "";
+
   const body = `
     <div class="breadcrumb"><a href="/">トップ</a> &gt; <a href="/diary/">釣行記</a> &gt; ${log.title}</div>
     <div class="detail-header">
@@ -241,6 +282,8 @@ function buildDiaryPage(log) {
     <div class="detail-section">
       ${log.body.map(p => `<p style="margin-bottom:12px;">${p}</p>`).join("")}
     </div>
+    ${cookSection}
+    ${guideSection}
     <div class="detail-section">
       <h2>関連</h2>
       <div class="amazon-links">
@@ -342,13 +385,14 @@ function buildGuidePage(guide) {
 
   // guide.gear があれば、記事で触れた道具をAmazon検索へのリンクとして並べる。
   const gearLinks = (guide.gear || [])
-    .map(g => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(g.q)}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">🛒 ${g.name}</a>`)
+    .map(g => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(g.q)}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">${g.name}</a>`)
     .join("");
 
   const gear = gearLinks
     ? `<div class="detail-section">
         <h2>この記事で使う道具</h2>
         <div class="amazon-links">${gearLinks}</div>
+        <p class="amazon-note">Amazonの検索結果が新しいタブで開きます</p>
       </div>`
     : "";
 
