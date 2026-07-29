@@ -8,6 +8,7 @@ const INK = "#111111";
 const GRAY = "#888888";
 const LIGHT = "#dddddd";
 const ACCENT = "#b00020";
+const WATER = "#e6edf1";
 
 // アジの側面の輪郭（頭は左）。各図で使い回す。
 function ajiBody({ pectoral = true } = {}) {
@@ -210,6 +211,127 @@ const FIGURES = {
 
         <path d="M152 100 L 100 60" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
         <text x="96" y="56" font-size="13" fill="${ACCENT}" font-weight="700" text-anchor="end">アニサキス</text>
+      </svg>
+    `,
+  },
+
+  // 潮氷の作り方（クーラーボックスの断面）
+  "cooler-shioogori": {
+    title: "潮氷の作り方",
+    caption: "クーラーボックスに海水と氷を入れ、シャーベット状にしたものが潮氷。魚が完全に浸かる量を作る。真水の氷水は使わない。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="クーラーボックスの断面図。海水と氷を入れた潮氷に魚が浸かっている様子を示している。">
+        <text x="200" y="26" font-size="13" fill="${INK}" text-anchor="middle">クーラーボックスの断面</text>
+
+        <path d="M52 48 L 272 48 L 272 66 L 52 66 Z"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M60 66 L 264 66 L 252 190 L 72 190 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M76 82 L 248 82 L 240 174 L 84 174 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="1.8" stroke-linejoin="round"/>
+
+        <path d="M78 100 L 246 100 L 240 174 L 84 174 Z" fill="${WATER}" stroke="none"/>
+        <path d="M78 100 L 246 100" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <rect x="88" y="96" width="22" height="17" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="120" y="92" width="18" height="14" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="150" y="97" width="23" height="17" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="186" y="93" width="18" height="14" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="214" y="98" width="21" height="16" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+
+        <path d="M96 142 C 108 130, 142 130, 154 142 C 142 154, 108 154, 96 142 Z
+                 M154 142 L 172 132 L 167 142 L 172 152 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2"/>
+        <path d="M150 164 C 162 154, 194 154, 206 164 C 194 174, 162 174, 150 164 Z
+                 M206 164 L 224 155 L 219 164 L 224 173 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2"/>
+
+        <path d="M232 104 L 292 96" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="298" y="100" font-size="13" fill="${INK}" font-weight="700">氷</text>
+
+        <path d="M240 140 L 292 136" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="298" y="140" font-size="13" fill="${INK}" font-weight="700">海水</text>
+
+        <path d="M216 166 L 292 180" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="298" y="178" font-size="13" fill="${ACCENT}" font-weight="700">魚</text>
+        <text x="298" y="196" font-size="11" fill="${GRAY}">完全に浸す</text>
+      </svg>
+    `,
+  },
+
+  // 血抜きで切る位置
+  "chinuki-era": {
+    title: "血抜きで切る位置",
+    caption: "エラ蓋を持ち上げ、エラの付け根（背骨側の太い血管が通る部分）に刃先を差し入れて切る。切ったら海水を張ったバケツに数分入れておくと血が抜けやすい。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="魚の頭部の図。エラ蓋を持ち上げてエラの付け根を切る位置を示している。">
+        <text x="36" y="30" font-size="13" fill="${GRAY}">魚の頭を拡大（頭は左）</text>
+
+        <path d="M36 122 C 56 92, 96 70, 150 66 L 206 66" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M36 122 C 56 152, 96 174, 150 178 L 206 178" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M206 66 L 206 178" fill="none" stroke="${LIGHT}" stroke-width="2" stroke-dasharray="6 5"/>
+        <path d="M36 122 L 74 128" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="86" cy="110" r="9" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="86" cy="110" r="3.5" fill="${INK}"/>
+
+        <path d="M152 70 C 172 100, 172 146, 152 176" fill="none" stroke="${GRAY}" stroke-width="2.5"/>
+        <path d="M124 96 C 138 116, 138 132, 124 152 M134 92 C 148 114, 148 134, 134 156"
+              fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <path d="M116 92 L 142 104" fill="none" stroke="${ACCENT}" stroke-width="4.5" stroke-linecap="round"/>
+
+        <path d="M142 102 L 216 94" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="222" y="92" font-size="14" fill="${ACCENT}" font-weight="700">エラの付け根</text>
+        <text x="222" y="110" font-size="11" fill="${GRAY}">ここに刃先を入れて切る</text>
+
+        <path d="M166 152 L 216 150" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="222" y="154" font-size="12" fill="${GRAY}">エラ蓋を持ち上げる</text>
+      </svg>
+    `,
+  },
+
+  // 氷焼けを防ぐ
+  "koori-yake": {
+    title: "氷に直接当てない",
+    caption: "氷が身に直接触れ続けると、その部分が凍って白く変色する（氷焼け）。潮氷から上げたあとは、袋に入れてから氷の上に置く。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="左は魚を氷に直接当てた悪い例、右は袋に入れた良い例を並べた比較図。">
+        <path d="M200 40 L 200 196" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <text x="100" y="60" font-size="20" fill="${ACCENT}" font-weight="700" text-anchor="middle">✕</text>
+        <text x="300" y="60" font-size="20" fill="${INK}" font-weight="700" text-anchor="middle">○</text>
+
+        <rect x="34" y="134" width="26" height="20" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="66" y="138" width="24" height="18" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="96" y="134" width="26" height="20" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="128" y="139" width="24" height="18" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="158" y="135" width="24" height="19" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+
+        <path d="M52 118 C 70 100, 128 100, 148 118 C 128 136, 70 136, 52 118 Z
+                 M148 118 L 174 104 L 167 118 L 174 132 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M62 128 C 84 138, 118 138, 140 126" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+
+        <text x="100" y="176" font-size="12" fill="${INK}" text-anchor="middle">氷に直接触れている</text>
+        <text x="100" y="194" font-size="11" fill="${ACCENT}" text-anchor="middle">触れた面が白くなる</text>
+
+        <rect x="234" y="134" width="26" height="20" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="266" y="138" width="24" height="18" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="296" y="134" width="26" height="20" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="328" y="139" width="24" height="18" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="358" y="135" width="24" height="19" fill="#ffffff" stroke="${INK}" stroke-width="1.8"/>
+
+        <rect x="238" y="90" width="126" height="46" rx="7" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M238 102 L 364 102" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M290 94 L 290 100 M300 94 L 300 100 M310 94 L 310 100"
+              fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <path d="M250 118 C 262 108, 300 108, 314 118 C 300 128, 262 128, 250 118 Z
+                 M314 118 L 334 110 L 329 118 L 334 126 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2"/>
+
+        <text x="300" y="176" font-size="12" fill="${INK}" text-anchor="middle">袋に入れてから置く</text>
+        <text x="300" y="194" font-size="11" fill="${GRAY}" text-anchor="middle">冷気は伝わる</text>
       </svg>
     `,
   },
