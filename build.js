@@ -340,6 +340,18 @@ function buildGuidePage(guide) {
     </div>
   `).join("");
 
+  // guide.gear があれば、記事で触れた道具をAmazon検索へのリンクとして並べる。
+  const gearLinks = (guide.gear || [])
+    .map(g => `<a class="amazon-btn" href="${AMAZON_BASE}${encodeURIComponent(g.q)}&tag=${AMAZON_TAG}" target="_blank" rel="noopener noreferrer">🛒 ${g.name}</a>`)
+    .join("");
+
+  const gear = gearLinks
+    ? `<div class="detail-section">
+        <h2>この記事で使う道具</h2>
+        <div class="amazon-links">${gearLinks}</div>
+      </div>`
+    : "";
+
   const related = relatedFish
     ? `<div class="detail-section">
         <h2>関連</h2>
@@ -363,6 +375,7 @@ function buildGuidePage(guide) {
       <div class="legal-body"><p>${guide.lead}</p></div>
     </div>
     ${sections}
+    ${gear}
     ${related}
   `;
 

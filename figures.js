@@ -335,6 +335,175 @@ const FIGURES = {
       </svg>
     `,
   },
+
+  // 手開き①：頭を折ってワタごと引き抜く
+  "iwashi-atama": {
+    title: "頭を折る位置",
+    caption: "胸びれの後ろで頭を折り、そのまま下へ引く。うまくいくと内臓が頭についてまとめて出てくる。包丁は使わない。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="イワシの側面図。胸びれの後ろで頭を折る位置と、下に引く方向を示している。">
+        <text x="30" y="28" font-size="13" fill="${INK}" font-weight="700">① 頭とワタを取る</text>
+
+        <path d="M30 108 C 52 84, 90 68, 140 66 C 196 64, 250 78, 286 96
+                 L 286 116 C 250 134, 196 148, 140 146 C 90 144, 52 128, 30 108 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M286 96 L 352 70 L 338 106 L 352 142 L 286 116 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M156 67 L 178 48 L 198 66 Z" fill="#ffffff" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M76 76 C 88 96, 88 116, 76 136" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <circle cx="54" cy="100" r="6" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="108" cy="87" r="3.5" fill="${INK}"/>
+        <circle cx="132" cy="86" r="3.5" fill="${INK}"/>
+        <circle cx="156" cy="86" r="3.5" fill="${INK}"/>
+        <circle cx="180" cy="87" r="3.5" fill="${INK}"/>
+        <circle cx="204" cy="89" r="3.5" fill="${INK}"/>
+        <path d="M90 114 C 102 120, 108 129, 100 136 C 92 131, 87 123, 90 114 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+
+        <path d="M100 72 L 106 142" fill="none" stroke="${ACCENT}" stroke-width="3"
+              stroke-dasharray="8 6" stroke-linecap="round"/>
+
+        <path d="M78 152 C 72 172, 64 182, 50 188" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+        <path d="M50 188 L 60 184 M50 188 L 56 178" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+
+        <path d="M103 70 L 150 42" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="156" y="40" font-size="13" fill="${ACCENT}" font-weight="700">ここで折る</text>
+
+        <text x="200" y="206" font-size="12" fill="${GRAY}" text-anchor="middle">下へ引くと内臓も一緒に出てくる</text>
+      </svg>
+    `,
+  },
+
+  // 手開き②：親指を背骨に沿わせて開く
+  "iwashi-hiraku": {
+    title: "親指を滑らせて開く",
+    caption: "腹側から背骨の上に両親指を差し入れ、背骨に沿わせて尾のほうへ滑らせる。力を入れず、骨の感触をなぞるように動かすと身が割れにくい。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="開いたイワシを上から見た図。背骨に沿って親指を尾へ滑らせる方向と、身が左右に開く様子を示している。">
+        <text x="30" y="28" font-size="13" fill="${INK}" font-weight="700">② 親指で開く</text>
+
+        <path d="M300 88 L 346 72 L 336 110 L 346 148 L 300 132 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 66 C 130 54, 230 62, 300 84 L 304 110 L 46 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 154 C 130 166, 230 158, 300 136 L 304 110 L 46 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <path d="M72 110 L 288 110" fill="none" stroke="${ACCENT}" stroke-width="4" stroke-linecap="round"/>
+        <path d="M288 110 L 274 103 M288 110 L 274 117" fill="none" stroke="${ACCENT}" stroke-width="4" stroke-linecap="round"/>
+
+        <path d="M168 96 L 168 74" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M168 74 L 163 82 M168 74 L 173 82" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M168 124 L 168 146" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M168 146 L 163 138 M168 146 L 173 138" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <text x="200" y="206" font-size="12" fill="${GRAY}" text-anchor="middle">背骨をなぞりながら尾へ。身は左右に開いていく</text>
+      </svg>
+    `,
+  },
+
+  // 手開き③：背骨を外す
+  "iwashi-hone": {
+    title: "背骨の外し方",
+    caption: "開いたら背骨の頭側の端をつまみ、尾に向かってゆっくり引き剥がす。尾の付け根まで来たら、そこで背骨を折って取る。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="開いたイワシから背骨を頭側から尾へ引き剥がす様子を示した図。">
+        <text x="30" y="28" font-size="13" fill="${INK}" font-weight="700">③ 背骨を外す</text>
+
+        <path d="M300 88 L 346 72 L 336 110 L 346 148 L 300 132 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 66 C 130 54, 230 62, 300 84 L 304 110 L 46 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 154 C 130 166, 230 158, 300 136 L 304 110 L 46 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <path d="M52 88 C 120 96, 220 104, 296 108 L 296 116 C 220 112, 120 104, 52 96 Z"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M92 95 L 92 103 M132 99 L 132 107 M172 102 L 172 110
+                 M212 105 L 212 112 M252 107 L 252 114"
+              fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+
+        <path d="M104 76 C 172 68, 240 74, 282 86" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M282 86 L 269 84 M282 86 L 273 94" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <text x="190" y="56" font-size="12" fill="${ACCENT}" font-weight="700" text-anchor="middle">頭側からつまんで尾へ</text>
+
+        <path d="M298 116 L 298 132" fill="none" stroke="${ACCENT}" stroke-width="4" stroke-linecap="round"/>
+        <path d="M300 132 L 328 162" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="334" y="168" font-size="12" fill="${ACCENT}" font-weight="700" text-anchor="end">尾の付け根で折る</text>
+
+        <text x="30" y="206" font-size="12" fill="${GRAY}">腹骨と背びれは最後に指でつまんで取る</text>
+      </svg>
+    `,
+  },
+
+  // 冷凍するときの包み方
+  "reitou-tsutsumi": {
+    title: "冷凍するときの包み方",
+    caption: "水気を拭き、1回分ずつラップでぴったり包み、保存袋に入れて空気を抜く。この3手間で冷凍焼けと臭い移りがかなり防げる。",
+    svg: `
+      <svg viewBox="0 0 400 200" role="img" aria-label="冷凍の手順を3段階で示した図。水気を拭く、ラップで包む、保存袋に入れて空気を抜く。">
+        <rect x="26" y="72" width="88" height="44" rx="4" fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-dasharray="5 5"/>
+        <path d="M38 94 C 52 82, 88 82, 102 94 C 88 106, 52 106, 38 94 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <text x="70" y="140" font-size="12" fill="${INK}" text-anchor="middle">① 水気を拭く</text>
+        <text x="70" y="158" font-size="11" fill="${GRAY}" text-anchor="middle">ここを省かない</text>
+
+        <path d="M126 94 L 152 94" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M152 94 L 144 89 M152 94 L 144 99" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <rect x="160" y="74" width="84" height="40" rx="5" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M176 77 L 163 94 M198 77 L 163 108 M220 77 L 178 111 M241 84 L 208 111"
+              fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+        <path d="M172 94 C 184 84, 216 84, 230 94 C 216 104, 184 104, 172 94 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <text x="202" y="140" font-size="12" fill="${INK}" text-anchor="middle">② ラップで包む</text>
+        <text x="202" y="158" font-size="11" fill="${GRAY}" text-anchor="middle">1回分ずつ</text>
+
+        <path d="M256 94 L 282 94" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M282 94 L 274 89 M282 94 L 274 99" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <rect x="290" y="70" width="86" height="48" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M290 82 L 376 82" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M302 100 C 314 90, 346 90, 358 100 C 346 110, 314 110, 302 100 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <text x="333" y="140" font-size="12" fill="${INK}" text-anchor="middle">③ 保存袋へ</text>
+        <text x="333" y="158" font-size="11" fill="${ACCENT}" text-anchor="middle">空気を抜く</text>
+      </svg>
+    `,
+  },
+
+  // 空気を抜くかどうかの違い
+  "reitou-kuuki": {
+    title: "空気を残さない",
+    caption: "袋に空気が残っていると、その水分が霜になり、身の表面が乾いてパサつく（冷凍焼け）。袋の口を少し開けたまま水に沈めると、水圧で空気が押し出せる。",
+    svg: `
+      <svg viewBox="0 0 400 210" role="img" aria-label="左は袋に空気が残った悪い例、右は空気を抜いた良い例の比較図。">
+        <path d="M200 40 L 200 186" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <text x="100" y="60" font-size="20" fill="${ACCENT}" font-weight="700" text-anchor="middle">✕</text>
+        <text x="300" y="60" font-size="20" fill="${INK}" font-weight="700" text-anchor="middle">○</text>
+
+        <rect x="34" y="82" width="132" height="62" rx="7" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M34 94 L 166 94" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M62 120 C 76 108, 124 108, 138 120 C 124 132, 76 132, 62 120 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <circle cx="52" cy="106" r="2.5" fill="${ACCENT}"/>
+        <circle cx="150" cy="108" r="2.5" fill="${ACCENT}"/>
+        <circle cx="58" cy="134" r="2.5" fill="${ACCENT}"/>
+        <circle cx="146" cy="134" r="2.5" fill="${ACCENT}"/>
+        <circle cx="100" cy="102" r="2.5" fill="${ACCENT}"/>
+        <text x="100" y="166" font-size="12" fill="${INK}" text-anchor="middle">空気が残っている</text>
+        <text x="100" y="184" font-size="11" fill="${ACCENT}" text-anchor="middle">霜がつき、身が乾く</text>
+
+        <rect x="240" y="92" width="120" height="42" rx="7" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M240 102 L 360 102" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M252 116 C 266 106, 334 106, 348 116 C 334 126, 266 126, 252 116 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <text x="300" y="166" font-size="12" fill="${INK}" text-anchor="middle">空気を抜いて密着</text>
+        <text x="300" y="184" font-size="11" fill="${GRAY}" text-anchor="middle">霜がつきにくい</text>
+      </svg>
+    `,
+  },
 };
 
 module.exports = { FIGURES };
