@@ -30,6 +30,31 @@ function ajiBody({ pectoral = true } = {}) {
 const LATERAL_FRONT = "M88 98 C 130 92, 172 98, 210 106";
 const LATERAL_REAR = "M210 106 C 245 112, 275 112, 298 112";
 
+// サバの側面の輪郭（頭は左）。紡錘形の体、細い尾柄、尾の手前に並ぶ小離鰭が目印。
+function sabaBody({ pectoral = true } = {}) {
+  return `
+    <path d="M28 104 C 58 76, 106 58, 166 58 C 222 58, 264 76, 288 94
+             L 330 100 L 330 108 L 288 114
+             C 264 132, 222 150, 166 150 C 106 150, 58 132, 28 104 Z"
+          fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M330 100 L 372 72 L 358 104 L 372 136 L 330 108 Z"
+          fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M148 59 L 172 34 L 194 61 Z" fill="#ffffff" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M226 64 L 240 48 L 253 69 Z" fill="#ffffff" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M266 80 l 11 -9 l -2 9 z M282 90 l 11 -9 l -2 9 z M300 96 l 11 -8 l -2 8 z"
+          fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M266 127 l 11 9 l -2 -9 z M282 117 l 11 9 l -2 -9 z M300 111 l 11 8 l -2 -8 z"
+          fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M100 74 C 112 82, 124 66, 136 74 M144 68 C 156 76, 168 60, 180 68
+             M188 66 C 200 74, 212 58, 224 66 M232 72 C 242 80, 252 66, 262 74"
+          fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M76 70 C 88 94, 88 114, 76 136" fill="none" stroke="${GRAY}" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="56" cy="98" r="5.5" fill="none" stroke="${INK}" stroke-width="2.5"/>
+    ${pectoral ? `<path d="M96 116 C 110 122, 118 134, 108 142 C 99 137, 93 127, 96 116 Z"
+          fill="none" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>` : ""}
+  `;
+}
+
 const FIGURES = {
   // ゼイゴの位置
   "aji-zeigo": {
@@ -96,6 +121,95 @@ const FIGURES = {
 
         <text x="30" y="168" font-size="12" fill="${GRAY}">浅い切り込みを数回に分けて深くしていく</text>
         <text x="30" y="192" font-size="12" fill="${GRAY}">※ 頭と内臓を取り除いた状態の断面</text>
+      </svg>
+    `,
+  },
+
+  // アニサキスの寄生部位と、死後の移動
+  "saba-anisakis-zone": {
+    title: "アニサキスがいる場所",
+    caption: "アニサキスは生きている魚では内臓（腹腔内）に集中している。魚が死んで時間が経つと、内臓から腹側の筋肉へ移動する。だから釣ったその日に内臓を抜くことに意味がある。",
+    svg: `
+      <svg viewBox="0 0 400 240" role="img" aria-label="サバの側面図。アニサキスが内臓に集中し、死後に腹側の筋肉へ移動することを示している。">
+        <text x="200" y="24" font-size="13" fill="${INK}" text-anchor="middle">死後、時間の経過とともに腹側の筋肉へ移動する</text>
+
+        ${sabaBody({ pectoral: false })}
+
+        <path d="M96 112 C 116 140, 152 146, 176 128 C 162 108, 122 100, 96 112 Z"
+              fill="${ACCENT}" fill-opacity="0.28" stroke="${ACCENT}" stroke-width="2"/>
+        <path d="M184 140 C 212 146, 240 140, 260 124 L 252 112 C 232 124, 208 132, 188 128 Z"
+              fill="${ACCENT}" fill-opacity="0.10" stroke="${ACCENT}" stroke-width="1.6"
+              stroke-dasharray="6 5"/>
+
+        <path d="M172 116 C 196 118, 214 114, 234 106" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+        <path d="M234 106 L 223 107 M234 106 L 227 113" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+
+        <path d="M136 122 L 108 196" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="104" y="213" font-size="14" fill="${ACCENT}" font-weight="700" text-anchor="middle">内臓</text>
+        <text x="104" y="230" font-size="11" fill="${GRAY}" text-anchor="middle">最も多い</text>
+
+        <path d="M244 134 L 288 196" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="296" y="213" font-size="14" fill="${ACCENT}" font-weight="700" text-anchor="middle">腹側の筋肉</text>
+        <text x="296" y="230" font-size="11" fill="${GRAY}" text-anchor="middle">死後に移動してくる</text>
+      </svg>
+    `,
+  },
+
+  // 三枚おろし後、重点的に確認する場所
+  "saba-harami-check": {
+    title: "片身のどこを重点的に見るか",
+    caption: "三枚におろしたら、腹身（腹側の薄い部分）を重点的に確認する。ここは内臓に接していた場所で、移動してきたアニサキスが最も見つかりやすい。血合い骨のまわりも見落としやすい。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="サバの片身の図。腹側の薄い部分を重点的に確認することを示している。">
+        <text x="200" y="22" font-size="13" fill="${INK}" text-anchor="middle">三枚におろした片身（頭は左）</text>
+
+        <path d="M46 66 C 140 52, 250 58, 350 88 L 352 98 C 250 124, 140 138, 46 116 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M46 100 C 140 120, 250 108, 351 93 L 352 98 C 250 124, 140 138, 46 116 Z"
+              fill="${ACCENT}" fill-opacity="0.18" stroke="${ACCENT}" stroke-width="2"/>
+
+        <path d="M60 92 C 150 88, 250 84, 340 90" fill="none" stroke="${GRAY}"
+              stroke-width="1.8" stroke-dasharray="5 5" stroke-linecap="round"/>
+
+        <path d="M90 52 L 90 60" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="90" y="46" font-size="12" fill="${GRAY}" text-anchor="middle">背側</text>
+
+        <path d="M292 52 L 285 84" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="296" y="46" font-size="12" fill="${GRAY}" text-anchor="middle">血合い骨のライン</text>
+
+        <path d="M170 120 L 170 166" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="170" y="186" font-size="14" fill="${ACCENT}" font-weight="700" text-anchor="middle">腹身</text>
+        <text x="170" y="204" font-size="11" fill="${GRAY}" text-anchor="middle">重点的に確認する</text>
+      </svg>
+    `,
+  },
+
+  // 明るい場所で透かして見る
+  "saba-light-check": {
+    title: "透かして確認する",
+    caption: "身の下から明かりを当てると、白い糸状の虫が影として浮かびやすい。アニサキスは体長2〜3cm、太さ0.5〜1mmほどで、渦を巻いた状態で潜んでいることが多い。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="サバの身の下から明かりを当て、渦を巻いたアニサキスを透かして確認する図。">
+        <text x="200" y="22" font-size="13" fill="${INK}" text-anchor="middle">下から明かりを当てて透かす</text>
+
+        <path d="M200 174 L 130 128 M200 174 L 165 130 M200 174 L 200 133
+                 M200 174 L 235 130 M200 174 L 270 128"
+              fill="none" stroke="${GRAY}" stroke-width="1.5" stroke-dasharray="4 5"/>
+
+        <path d="M60 78 C 150 58, 250 62, 344 86 L 344 108 C 250 134, 150 132, 60 110 Z"
+              fill="#fafafa" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <path d="M158 96 c 16 0 16 20 0 20 c -12 0 -12 -15 -2 -15 c 8 0 8 10 0 10"
+              fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M256 92 c 15 2 12 21 -3 19 c -12 -2 -9 -16 0 -14 c 8 2 6 11 -2 9"
+              fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+
+        <path d="M156 180 C 156 158, 244 158, 244 180 Z"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="200" y="200" font-size="12" fill="${GRAY}" text-anchor="middle">明かり</text>
+
+        <path d="M152 100 L 100 60" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="96" y="56" font-size="13" fill="${ACCENT}" font-weight="700" text-anchor="end">アニサキス</text>
       </svg>
     `,
   },
