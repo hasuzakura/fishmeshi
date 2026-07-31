@@ -504,6 +504,335 @@ const FIGURES = {
       </svg>
     `,
   },
+
+  // 淡水魚を真水に浸けてはいけない理由
+  "kanri-shinto": {
+    title: "淡水魚は真水に浸けない",
+    caption: "身より塩分の薄い真水に浸けると、魚は水を吸って水っぽくなる。海水魚を海水の潮氷で冷やすのは、濃度が近くこの移動が起きにくいからだ。",
+    svg: `
+      <svg viewBox="0 0 400 230" role="img" aria-label="左は淡水魚を真水の氷水に浸けた悪い例、右は海水魚を海水の潮氷に入れた良い例の比較図。">
+        <path d="M200 46 L 200 186" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <text x="100" y="40" font-size="20" fill="${ACCENT}" font-weight="700" text-anchor="middle">✕</text>
+        <text x="300" y="40" font-size="20" fill="${INK}" font-weight="700" text-anchor="middle">○</text>
+
+        <path d="M34 60 L 166 60 L 154 178 L 46 178 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M40 88 L 160 88 L 154 178 L 46 178 Z" fill="${WATER}" stroke="none"/>
+        <path d="M40 88 L 160 88" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <rect x="50" y="84" width="20" height="15" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="80" y="81" width="17" height="13" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="107" y="85" width="20" height="15" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="135" y="82" width="17" height="13" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+
+        <path d="M58 136 C 74 124, 108 124, 122 136 C 108 148, 74 148, 58 136 Z
+                 M122 136 L 140 127 L 135 136 L 140 145 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+
+        <path d="M90 108 L 90 118" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M90 122 L 85 112 M90 122 L 95 112" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M90 164 L 90 154" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M90 150 L 85 160 M90 150 L 95 160" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+
+        <text x="100" y="200" font-size="13" fill="${INK}" text-anchor="middle">真水の氷水（塩分0%）</text>
+        <text x="100" y="219" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">身が水を吸う</text>
+
+        <path d="M234 60 L 366 60 L 354 178 L 246 178 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M240 88 L 360 88 L 354 178 L 246 178 Z" fill="${WATER}" stroke="none"/>
+        <path d="M240 88 L 360 88" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <rect x="250" y="84" width="20" height="15" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="280" y="81" width="17" height="13" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="307" y="85" width="20" height="15" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+        <rect x="335" y="82" width="17" height="13" fill="#ffffff" stroke="${INK}" stroke-width="1.6"/>
+
+        <path d="M258 136 C 274 124, 308 124, 322 136 C 308 148, 274 148, 258 136 Z
+                 M322 136 L 340 127 L 335 136 L 340 145 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+
+        <text x="300" y="200" font-size="13" fill="${INK}" text-anchor="middle">海水の潮氷（約3%）</text>
+        <text x="300" y="219" font-size="12" fill="${GRAY}" text-anchor="middle">濃度が近く吸わない</text>
+      </svg>
+    `,
+  },
+
+  // 保冷剤で挟んで冷やす
+  "kanri-hoshitsu": {
+    title: "袋に入れてから保冷剤で挟む",
+    caption: "淡水魚は水に浸けずに冷やす。水気を拭いて袋に入れ、保冷剤で上下から挟む。袋越しでも冷気は十分に伝わり、氷焼けも防げる。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="クーラーボックスの断面図。袋に入れた魚を保冷剤で上下から挟んでいる様子。">
+        <text x="150" y="30" font-size="13" fill="${GRAY}" text-anchor="middle">クーラーボックスの断面</text>
+
+        <path d="M52 48 L 272 48 L 272 66 L 52 66 Z"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M60 66 L 264 66 L 252 190 L 72 190 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M76 82 L 248 82 L 240 174 L 84 174 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="1.8" stroke-linejoin="round"/>
+
+        <rect x="96" y="90" width="58" height="18" rx="3" fill="${WATER}" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="162" y="90" width="54" height="18" rx="3" fill="${WATER}" stroke="${INK}" stroke-width="1.8"/>
+
+        <rect x="92" y="116" width="132" height="36" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M92 123 L 224 123" fill="none" stroke="${GRAY}" stroke-width="1.6"/>
+        <path d="M108 136 C 122 126, 164 126, 178 136 C 164 146, 122 146, 108 136 Z
+                 M178 136 L 196 128 L 191 136 L 196 144 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2"/>
+
+        <rect x="96" y="156" width="58" height="16" rx="3" fill="${WATER}" stroke="${INK}" stroke-width="1.8"/>
+        <rect x="162" y="156" width="54" height="16" rx="3" fill="${WATER}" stroke="${INK}" stroke-width="1.8"/>
+
+        <path d="M216 98 L 288 92" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="294" y="96" font-size="13" fill="${INK}" font-weight="700">保冷剤</text>
+
+        <path d="M224 136 L 288 134" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="294" y="131" font-size="13" fill="${ACCENT}" font-weight="700">袋に入れた魚</text>
+        <text x="294" y="149" font-size="11" fill="${GRAY}">水に浸けない</text>
+
+        <path d="M216 164 L 288 176" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="294" y="180" font-size="13" fill="${INK}" font-weight="700">保冷剤</text>
+      </svg>
+    `,
+  },
+
+  // 立て塩の濃度と時間
+  "himono-tatejio": {
+    title: "立て塩の濃度と漬け時間",
+    caption: "水1リットルに塩80〜100gが基本。20cm前後のアジやイワシなら30〜40分。迷ったら短めにする。薄い塩は食べるときに足せるが、入れすぎた塩は抜けない。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="ボウルに張った塩水に開いた魚を漬けている図。塩水の濃度と漬け時間の目安を示している。">
+        <text x="200" y="30" font-size="14" fill="${INK}" text-anchor="middle" font-weight="700">塩水 8〜10%</text>
+        <text x="200" y="50" font-size="12" fill="${GRAY}" text-anchor="middle">水1L ＋ 塩80〜100g</text>
+
+        <path d="M84 74 L 316 74 L 286 178 L 114 178 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M94 96 L 306 96 L 284 176 L 116 176 Z" fill="${WATER}" stroke="none"/>
+        <path d="M94 96 L 306 96" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <path d="M237 129 L 256 122 L 252 138 L 256 154 L 237 147 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M110 138 C 114 128, 122 122, 130 120 C 165 115, 207 118, 237 127 L 238 138 L 110 138 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M110 138 C 114 148, 122 154, 130 156 C 165 162, 207 158, 237 149 L 238 138 L 110 138 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="128" cy="130" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <circle cx="128" cy="146" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+
+        <circle cx="112" cy="108" r="2" fill="${GRAY}"/>
+        <circle cx="140" cy="106" r="2" fill="${GRAY}"/>
+        <circle cx="262" cy="112" r="2" fill="${GRAY}"/>
+        <circle cx="276" cy="140" r="2" fill="${GRAY}"/>
+        <circle cx="250" cy="164" r="2" fill="${GRAY}"/>
+        <circle cx="150" cy="166" r="2" fill="${GRAY}"/>
+
+        <text x="200" y="202" font-size="13" fill="${ACCENT}" text-anchor="middle" font-weight="700">20cm前後のアジ・イワシなら30〜40分</text>
+      </svg>
+    `,
+  },
+
+  // 干し網への並べ方
+  "himono-hoshiami": {
+    title: "干し網への並べ方",
+    caption: "身を上（皮を下）にして、重ならないよう間隔をあけて並べる。触れている面は乾かない。直射日光は避け、風通しのよい日陰に吊るす。",
+    svg: `
+      <svg viewBox="0 0 400 215" role="img" aria-label="干し網を上から見た図。開いた魚を身を上にして間隔をあけて2枚並べ、左から風が当たっている。">
+        <path d="M200 26 L 200 46" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M188 26 C 188 18, 212 18, 212 26" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <rect x="74" y="46" width="252" height="126" rx="8" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
+        <path d="M98 46 L 98 172 M130 46 L 130 172 M162 46 L 162 172 M194 46 L 194 172
+                 M226 46 L 226 172 M258 46 L 258 172 M290 46 L 290 172"
+              fill="none" stroke="${LIGHT}" stroke-width="1.2"/>
+        <path d="M74 72 L 326 72 M74 98 L 326 98 M74 124 L 326 124 M74 150 L 326 150"
+              fill="none" stroke="${LIGHT}" stroke-width="1.2"/>
+
+        <path d="M231 69 L 250 62 L 246 78 L 250 94 L 231 87 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M104 78 C 108 68, 116 62, 124 60 C 159 55, 201 58, 231 67 L 232 78 L 104 78 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M104 78 C 108 88, 116 94, 124 96 C 159 102, 201 98, 231 89 L 232 78 L 104 78 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="122" cy="70" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <circle cx="122" cy="86" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+
+        <path d="M231 133 L 250 126 L 246 142 L 250 158 L 231 151 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M104 142 C 108 132, 116 126, 124 124 C 159 119, 201 122, 231 131 L 232 142 L 104 142 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M104 142 C 108 152, 116 158, 124 160 C 159 166, 201 162, 231 153 L 232 142 L 104 142 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="122" cy="134" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <circle cx="122" cy="150" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+
+        <path d="M286 98 L 286 122" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+        <path d="M286 98 L 281 106 M286 98 L 291 106 M286 122 L 281 114 M286 122 L 291 114"
+              fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <path d="M294 110 L 328 110" fill="none" stroke="${GRAY}" stroke-width="1.2"/>
+        <text x="332" y="114" font-size="11" fill="${ACCENT}" font-weight="700">重ねない</text>
+
+        <text x="16" y="66" font-size="12" fill="${GRAY}">風</text>
+        <path d="M16 88 L 62 88 M16 112 L 62 112 M16 136 L 62 136" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M62 88 L 54 83 M62 88 L 54 93 M62 112 L 54 107 M62 112 L 54 117
+                 M62 136 L 54 131 M62 136 L 54 141"
+              fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linecap="round"/>
+
+        <text x="200" y="198" font-size="13" fill="${INK}" text-anchor="middle">身を上（皮を下）にして並べる</text>
+      </svg>
+    `,
+  },
+
+  // カサゴの棘の位置
+  "kasago-toge": {
+    title: "カサゴの棘の位置",
+    caption: "背びれ・腹びれ・尻びれ・エラ蓋に鋭い棘がある。毒はないとされるが深く刺さり、傷口から細菌が入ることがある。素手でつかまず、捌く前にハサミで切り落とす。",
+    svg: `
+      <svg viewBox="0 0 400 250" role="img" aria-label="カサゴの側面図。背びれ・腹びれ・尻びれに鋭い棘があることを示している。">
+        <path d="M30 150 C 38 124, 52 106, 78 98 C 110 88, 150 92, 190 104 C 230 116, 262 126, 282 134
+                 L 282 146
+                 C 262 154, 230 166, 190 176 C 150 186, 110 190, 78 182 C 52 174, 38 164, 30 156 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M282 134 L 326 112 L 316 139 L 326 166 L 282 146 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <path d="M92 96 L 100 66 L 110 90 L 120 62 L 130 88 L 140 60 L 150 88 L 160 62 L 170 92 L 180 66 L 190 96 L 196 80 L 204 106 Z"
+              fill="#ffffff" stroke="${ACCENT}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M206 108 C 226 86, 254 94, 264 128 C 244 122, 222 114, 206 108 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+
+        <path d="M110 160 C 134 166, 148 184, 134 198 C 118 190, 108 176, 110 160 Z"
+              fill="none" stroke="${GRAY}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M84 172 L 88 200 L 104 186 Z"
+              fill="#ffffff" stroke="${ACCENT}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M170 178 L 176 204 L 186 184 L 194 202 L 202 182 L 210 198 L 216 174 Z"
+              fill="#ffffff" stroke="${ACCENT}" stroke-width="2.2" stroke-linejoin="round"/>
+
+        <path d="M84 106 C 96 130, 96 156, 84 178" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M32 148 C 46 154, 62 158, 74 160" fill="none" stroke="${GRAY}" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="62" cy="126" r="9" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="62" cy="126" r="4" fill="${INK}"/>
+
+        <path d="M150 58 L 150 40" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="150" y="34" font-size="13" fill="${ACCENT}" text-anchor="middle" font-weight="700">背びれの棘（最も鋭い）</text>
+
+        <path d="M90 200 L 84 224" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="78" y="240" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">腹びれ</text>
+
+        <path d="M198 202 L 226 224" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+        <text x="246" y="240" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">尻びれ</text>
+
+        <text x="342" y="46" font-size="12" fill="${ACCENT}" text-anchor="end" font-weight="700">素手でつかまない</text>
+      </svg>
+    `,
+  },
+
+  // 煮付け前の霜降り
+  "kasago-shimofuri": {
+    title: "煮付け前の霜降り",
+    caption: "熱湯を回しかけて表面が白くなったら、すぐ冷水に取る。指でこすってぬめりと残ったウロコを落とすと、煮汁が濁らず味が澄む。",
+    svg: `
+      <svg viewBox="0 0 400 200" role="img" aria-label="霜降りの3手順を示した図。熱湯をかける、冷水に取る、こすって洗う。">
+        <path d="M48 50 L 46 72 M68 50 L 66 72 M88 50 L 86 72" fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linecap="round"/>
+        <text x="68" y="42" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">熱湯</text>
+        <rect x="26" y="80" width="86" height="34" rx="3" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M40 98 C 52 88, 82 88, 94 98 C 82 108, 52 108, 40 98 Z
+                 M94 98 L 108 91 L 104 98 L 108 105 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2"/>
+        <text x="68" y="142" font-size="12" fill="${INK}" text-anchor="middle">① 熱湯をかける</text>
+        <text x="68" y="160" font-size="11" fill="${GRAY}" text-anchor="middle">表面が白くなるまで</text>
+
+        <path d="M124 98 L 148 98" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M148 98 L 140 93 M148 98 L 140 103" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M160 72 L 250 72 L 238 118 L 172 118 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M166 86 L 244 86 L 236 116 L 174 116 Z" fill="${WATER}" stroke="none"/>
+        <path d="M166 86 L 244 86" fill="none" stroke="${GRAY}" stroke-width="1.6"/>
+        <path d="M180 100 C 192 90, 218 90, 230 100 C 218 110, 192 110, 180 100 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2"/>
+        <text x="205" y="142" font-size="12" fill="${INK}" text-anchor="middle">② すぐ冷水へ</text>
+        <text x="205" y="160" font-size="11" fill="${ACCENT}" text-anchor="middle">火を入れすぎない</text>
+
+        <path d="M262 98 L 286 98" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M286 98 L 278 93 M286 98 L 278 103" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M300 100 C 314 88, 348 88, 362 100 C 348 112, 314 112, 300 100 Z
+                 M362 100 L 378 92 L 373 100 L 378 108 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M306 76 C 322 68, 350 68, 366 76" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <path d="M366 76 L 357 73 M366 76 L 359 81" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <path d="M306 76 L 315 73 M306 76 L 313 81" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <text x="336" y="142" font-size="12" fill="${INK}" text-anchor="middle">③ こすって洗う</text>
+        <text x="336" y="160" font-size="11" fill="${GRAY}" text-anchor="middle">ぬめり・ウロコを落とす</text>
+      </svg>
+    `,
+  },
+
+  // キスの背開き
+  "kisu-segaki": {
+    title: "背開きの切り込み",
+    caption: "頭を落としたら、背側から中骨の上に沿って尾まで開く。腹側の皮は切り離さず、観音開きのようにつなげたまま広げる。",
+    svg: `
+      <svg viewBox="0 0 400 210" role="img" aria-label="キスの側面図。頭を落とす位置と、背側から中骨の上を尾まで切り開く線を示している。">
+        <path d="M40 110 C 62 98, 102 90, 152 88 C 212 86, 268 92, 306 102
+                 L 306 116
+                 C 268 126, 212 132, 152 130 C 102 128, 62 120, 40 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M306 102 L 348 84 L 338 109 L 348 134 L 306 116 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="58" cy="106" r="4.5" fill="none" stroke="${INK}" stroke-width="2"/>
+        <path d="M76 94 C 84 102, 84 116, 76 126" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M88 82 L 96 138" fill="none" stroke="${GRAY}" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="70" y="164" font-size="12" fill="${GRAY}" text-anchor="middle">① 頭を落とす</text>
+        <path d="M84 150 L 90 138" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+
+        <path d="M110 98 C 170 94, 240 98, 296 106" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M296 106 L 284 100 M296 106 L 285 111" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M180 96 L 180 62" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="180" y="54" font-size="13" fill="${ACCENT}" text-anchor="middle" font-weight="700">② 中骨の上に沿って尾まで</text>
+        <text x="180" y="34" font-size="11" fill="${GRAY}" text-anchor="middle">浅い切り込みを3回繰り返す</text>
+
+        <path d="M112 122 C 172 126, 240 124, 292 118" fill="none" stroke="${GRAY}" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <path d="M220 128 L 240 158" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="266" y="168" font-size="12" fill="${INK}" text-anchor="middle">腹側は切り離さない</text>
+        <text x="266" y="186" font-size="11" fill="${GRAY}" text-anchor="middle">つなげたまま開く</text>
+      </svg>
+    `,
+  },
+
+  // キスの中骨の外し方
+  "kisu-nakabone": {
+    title: "中骨の外し方",
+    caption: "開いた身を広げ、中骨の下に包丁を寝かせて差し入れる。骨に沿って尾のほうへ滑らせ、尾の手前で中骨を切り離す。",
+    svg: `
+      <svg viewBox="0 0 400 210" role="img" aria-label="開いたキスを上から見た図。中骨の下に包丁を入れ、尾へ向かって滑らせる方向を示している。">
+        <path d="M240 110 L 278 94 L 268 120 L 278 146 L 240 130 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M70 108 C 120 96, 190 100, 240 110 L 242 120 L 70 120 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M70 132 C 120 144, 190 140, 240 130 L 242 120 L 70 120 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+
+        <path d="M74 119 L 238 120" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linecap="round"/>
+        <path d="M96 120 L 92 112 M120 120 L 116 112 M144 121 L 140 113 M168 121 L 164 113 M192 121 L 188 113"
+              fill="none" stroke="${ACCENT}" stroke-width="1.4" stroke-linecap="round"/>
+
+        <path d="M52 92 L 74 114" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="46" y="86" font-size="13" fill="${ACCENT}" text-anchor="middle" font-weight="700">中骨</text>
+
+        <path d="M84 162 L 226 158" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M226 158 L 214 153 M226 158 L 215 164" fill="none" stroke="${INK}" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="150" y="186" font-size="12" fill="${INK}" text-anchor="middle">包丁を寝かせて尾へ滑らせる</text>
+
+        <path d="M232 96 L 232 146" fill="none" stroke="${GRAY}" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <path d="M236 150 L 268 172" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="300" y="182" font-size="12" fill="${GRAY}" text-anchor="middle">尾の手前で切り離す</text>
+      </svg>
+    `,
+  },
 };
 
 module.exports = { FIGURES };

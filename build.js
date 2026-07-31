@@ -150,6 +150,17 @@ function buildFishPage(fish) {
   const url = `${SITE_URL}/fish/${fish.slug}/`;
   const description = `${fish.name}で作れるレシピ${recipes.length}件。刺身・塩焼き・揚げ物など、釣れた${fish.name}をすぐ料理できるレシピ一覧。`;
 
+  // この魚の下処理などを扱った解説記事があれば、レシピの前に導線を出す。
+  const guides = GUIDES.filter(g => g.fish === fish.name);
+  const guideSection = guides.length
+    ? `<div class="detail-section">
+        <h2>この魚の解説記事</h2>
+        <div class="index-list">
+          ${guides.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
+        </div>
+      </div>`
+    : "";
+
   // この魚を釣った釣行記があれば相互に行き来できるようにする。
   const logs = FISHING_LOGS.filter(l => l.fish === fish.name);
   const logSection = logs.length
@@ -170,6 +181,7 @@ function buildFishPage(fish) {
     <div class="index-list">
       ${recipes.map(r => `<a href="/recipe/${fish.slug}-${r.slug}/">${r.name}（${r.time}）</a>`).join("")}
     </div>
+    ${guideSection}
     ${logSection}
   `;
 
