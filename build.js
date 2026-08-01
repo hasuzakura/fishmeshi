@@ -8,7 +8,7 @@ const { FISH_LIST, RECIPES, AMAZON_BASE, AMAZON_TAG, ADSENSE_ENABLED, ADSENSE_CL
 const { FIGURES } = require("./figures.js");
 
 const SITE_URL = "https://fishmeshi.com";
-const SITE_NAME = "釣り飯ジェネレーター";
+const SITE_NAME = "Fish Meshi";
 const OPERATOR_NAME = "藤原";
 const OUT_DIR = __dirname;
 
@@ -50,10 +50,14 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
   ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ""}
 </head>
 <body>
-  <header>
-    <div class="container">
-      <p class="site-title"><a href="/" style="color:inherit;text-decoration:none;">${SITE_NAME}</a></p>
-      <p class="tagline">釣れた魚から、今夜の一品を見つけよう</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Fish<em>Meshi</em></a>
+      <nav class="site-nav">
+        <a href="/recipes/">レシピ</a>
+        <a href="/guide/">解説</a>
+        <a href="/diary/">釣行記</a>
+      </nav>
     </div>
   </header>
   <main>

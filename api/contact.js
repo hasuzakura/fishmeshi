@@ -10,7 +10,7 @@
 // 依存パッケージなし。Node.js 18以降のグローバル fetch を使用。
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_FROM = "釣り飯ジェネレーター <onboarding@resend.dev>";
+const DEFAULT_FROM = "Fish Meshi <onboarding@resend.dev>";
 
 // フォーム表示から送信までがこれより速い場合はボットとみなす（ミリ秒）
 const MIN_ELAPSED_MS = 3000;

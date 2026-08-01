@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>釣り飯ジェネレーター | 釣れた魚から料理を探す</title>
-  <meta name="description" content="釣れた魚・場所・道具・手元の調味料を選ぶだけで、今すぐ作れるオリジナルレシピが見つかります。">
+  <title>Fish Meshi | 釣れた魚から料理を探す</title>
+  <meta name="description" content="釣れた魚・場所・道具・手元の調味料を選ぶだけで、今すぐ作れるレシピが見つかります。下処理の解説記事も掲載。">
   <link rel="canonical" href="https://fishmeshi.com/">
   <meta name="google-site-verification" content="hjpEm3ZYsQxVLYnlbmeLeet3xSbbvGAQpOR_ZVXIyo0" />
+  <meta property="og:title" content="Fish Meshi | 釣れた魚から料理を探す">
+  <meta property="og:description" content="釣れた魚・場所・道具・手元の調味料を選ぶだけで、今すぐ作れるレシピが見つかります。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://fishmeshi.com/">
   <link rel="stylesheet" href="style.css">
   <!-- Google AdSense。data.js の ADSENSE_CLIENT と同じ値を使うこと（このファイルは手書きのため自動反映されない） -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7252742932766480" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1>釣り飯ジェネレーター</h1>
-      <p class="tagline">釣れた魚から、今夜の一品を見つけよう</p>
+  <!-- ヘッダーは build.js の layout() と同じ構造にすること（このファイルは手書きのため自動反映されない） -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Fish<em>Meshi</em></a>
+      <nav class="site-nav">
+        <a href="/recipes/">レシピ</a>
+        <a href="/guide/">解説</a>
+        <a href="/diary/">釣行記</a>
+      </nav>
     </div>
   </header>
+
+  <section class="hero">
+    <div class="container">
+      <p class="hero-eyebrow">FISHING × COOKING</p>
+      <h1 class="hero-title">釣った魚を、<br>今夜のごちそうに。</h1>
+      <p class="hero-lead">魚・場所・道具・手元の調味料を選ぶだけ。いま作れる一品が見つかります。</p>
+    </div>
+  </section>
 
   <main>
     <div class="container">
@@ -89,16 +106,25 @@
         <button class="reset-btn" id="reset-btn">もう一度選び直す</button>
       </section>
 
+      <section class="promo">
+        <a class="promo-card" href="/guide/">
+          <span class="promo-eyebrow">GUIDE</span>
+          <span class="promo-title">下処理と保存の解説</span>
+          <span class="promo-desc">魚別の下処理、釣り場からの持ち帰り方、冷凍・干物の作り方を、自作の図解つきで解説しています。釣った魚の味は、料理より前の工程でほぼ決まります。</span>
+          <span class="promo-more">解説を読む →</span>
+        </a>
+      </section>
+
     </div>
   </main>
 
   <footer>
     <div class="container">
-      <p>© 2026 釣り飯ジェネレーター</p>
+      <p>© 2026 Fish Meshi</p>
       <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
       <p class="footer-note"><a href="/recipes/">レシピ一覧</a> ｜ <a href="/guide/">解説</a> ｜ <a href="/diary/">釣行記</a></p>
       <p class="footer-note"><a href="/about/">運営者情報</a> ｜ <a href="/privacy/">プライバシーポリシー</a> ｜ <a href="/disclaimer/">免責事項</a> ｜ <a href="/contact/">お問い合わせ</a></p>
-      <p class="footer-note">Amazonのアソシエイトとして、釣り飯ジェネレーターは適格販売により収入を得ています。</p>
+      <p class="footer-note">Amazonのアソシエイトとして、Fish Meshiは適格販売により収入を得ています。</p>
     </div>
   </footer>
 
