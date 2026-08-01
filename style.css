@@ -120,7 +120,7 @@ header .tagline { display: none; }
   position: relative;
   overflow: hidden;
   background: transparent;
-  padding: 92px 0 96px;
+  padding: 92px 0 128px;
 }
 
 /* 写真は彩度を落として青いベールを重ね、海の色に寄せる */
@@ -156,16 +156,68 @@ header .tagline { display: none; }
 
 .hero .container { position: relative; z-index: 1; }
 
-/* ヒーローと本文の境目を波にする。fill の色は --bg（#0e2a40）と揃えること。 */
+/* ヒーローと本文の境目の波。3層を別々の速度と向きで流して、重なりで揺らぎを出す。
+   各層の波形は周期の両端が同じ高さ・同じ傾きなので、translateX(-50%) でシームレスに繋がる。
+   一番手前（.wave-front）の fill は --bg（#0e2a40）と揃えること。 */
 .hero-wave {
   position: absolute;
   left: 0;
   right: 0;
   bottom: -1px;
-  height: 58px;
+  height: 124px;
   z-index: 1;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 58' preserveAspectRatio='none'%3E%3Cpath d='M0,26 C120,54 260,4 400,22 C540,40 660,52 800,30 C920,12 1060,6 1200,24 L1200,58 L0,58 Z' fill='%230e2a40'/%3E%3C/svg%3E") repeat-x bottom center / 1200px 58px;
+  overflow: hidden;
   pointer-events: none;
+}
+
+.hero-wave .wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  will-change: transform;
+  /* shorthand で書くと duration が 0s に潰れて各層の指定が効かないため、個別プロパティで書く */
+  animation-name: waveDrift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* 奥の層ほど上にずらし、位相もずらす。同じ位相だと手前の波に完全に隠れてしまう。
+   セレクタの詳細度は .hero-wave .wave と揃えること（揃えないと共通指定に負ける）。 */
+.hero-wave .wave-back {
+  bottom: 34px;
+  opacity: 0.3;
+  background-position: 260px bottom;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C150,4 450,56 600,30 C750,4 1050,56 1200,30 L1200,60 L0,60 Z' fill='%23a5e8ff'/%3E%3C/svg%3E");
+  animation-duration: 27s;
+}
+
+.hero-wave .wave-mid {
+  bottom: 16px;
+  opacity: 0.55;
+  background-position: 680px bottom;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C150,4 450,56 600,30 C750,4 1050,56 1200,30 L1200,60 L0,60 Z' fill='%232f8dc4'/%3E%3C/svg%3E");
+  animation-duration: 18s;
+  animation-direction: reverse;
+}
+
+.hero-wave .wave-front {
+  bottom: 0;
+  background-position: 0 bottom;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,30 C150,4 450,56 600,30 C750,4 1050,56 1200,30 L1200,60 L0,60 Z' fill='%230e2a40'/%3E%3C/svg%3E");
+  animation-duration: 12s;
+}
+
+@keyframes waveDrift {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* 動きを減らす設定の環境では止める */
+@media (prefers-reduced-motion: reduce) {
+  .hero-wave .wave { animation: none; }
 }
 
 .hero-eyebrow {
