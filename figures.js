@@ -833,6 +833,234 @@ const FIGURES = {
       </svg>
     `,
   },
+
+  // タイのウロコの飛散対策
+  "tai-uroko": {
+    title: "ウロコを飛び散らせない",
+    caption: "タイのウロコは硬く、勢いよく飛ぶ。大きめのポリ袋に魚を入れ、袋の中に手を入れて取ると飛散が止まる。新聞紙を敷くだけでは防げない。",
+    svg: `
+      <svg viewBox="0 0 400 230" role="img" aria-label="左はそのままウロコを取ってウロコが飛び散る悪い例、右はポリ袋の中で取る良い例の比較図。">
+        <path d="M200 40 L 200 170 " fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <text x="100" y="40" font-size="20" fill="${ACCENT}" font-weight="700" text-anchor="middle">✕</text>
+        <text x="300" y="40" font-size="20" fill="${INK}" font-weight="700" text-anchor="middle">○</text>
+
+        <path d="M46 118 C 64 100, 118 100, 138 118 C 118 136, 64 136, 46 118 Z
+                 M138 118 L 162 105 L 155 118 L 162 131 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <circle cx="60" cy="114" r="2.5" fill="none" stroke="${INK}" stroke-width="1.5"/>
+
+        <path d="M56 92 l 7 -6 l 3 8 Z M92 80 l 8 -4 l 1 8 Z M128 86 l 8 -5 l 2 8 Z
+                 M40 146 l 8 4 l -1 -8 Z M84 156 l 8 3 l 0 -8 Z M126 150 l 8 4 l -1 -8 Z
+                 M26 106 l -8 -3 l 1 8 Z M158 92 l 7 -6 l 3 8 Z"
+              fill="#ffffff" stroke="${ACCENT}" stroke-width="1.8" stroke-linejoin="round"/>
+
+        <text x="100" y="196" font-size="13" fill="${INK}" text-anchor="middle">そのまま取る</text>
+        <text x="100" y="216" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">壁や床まで飛ぶ</text>
+
+        <rect x="228" y="76" width="146" height="88" rx="8" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
+        <path d="M228 90 L 374 90" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <path d="M290 80 L 290 88 M300 80 L 300 88 M310 80 L 310 88" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+
+        <path d="M248 124 C 264 108, 312 108, 330 124 C 312 140, 264 140, 248 124 Z
+                 M330 124 L 352 112 L 346 124 L 352 136 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="2"/>
+        <circle cx="260" cy="120" r="2.5" fill="none" stroke="${GRAY}" stroke-width="1.5"/>
+
+        <path d="M256 102 l 7 -5 l 2 7 Z M298 100 l 7 -4 l 1 7 Z M336 104 l 7 -5 l 2 7 Z
+                 M252 148 l 7 4 l -1 -7 Z M300 152 l 7 3 l 0 -7 Z M342 146 l 7 4 l -1 -7 Z"
+              fill="#ffffff" stroke="${GRAY}" stroke-width="1.6" stroke-linejoin="round"/>
+
+        <text x="300" y="196" font-size="13" fill="${INK}" text-anchor="middle">ポリ袋の中で取る</text>
+        <text x="300" y="216" font-size="12" fill="${GRAY}" text-anchor="middle">飛散が袋で止まる</text>
+      </svg>
+    `,
+  },
+
+  // 兜割りの刃を入れる位置
+  "tai-kabutowari": {
+    title: "兜割りで刃を入れる位置",
+    caption: "頭を立てて置き、上あごの中心（前歯の間）に出刃の刃元を当てる。包丁の背を叩いて少しずつ押し進め、硬いところで止まったら位置を変えて入れ直す。",
+    svg: `
+      <svg viewBox="0 0 400 240" role="img" aria-label="タイの頭を口が上になるよう立てて置き、上あごの中心に出刃を当てて上から割る位置を示した図。">
+        <text x="200" y="20" font-size="12" fill="${GRAY}" text-anchor="middle">頭を立てて置く（口が上）</text>
+
+        <path d="M200 12 L 200 26" fill="none" stroke="${ACCENT}" stroke-width="2"/>
+        <path d="M200 30 L 195 20 M200 30 L 205 20" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+
+        <rect x="192" y="36" width="16" height="30" rx="2" fill="#ffffff" stroke="${INK}" stroke-width="2"/>
+        <path d="M192 66 L 200 78 L 208 66 Z" fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M216 48 L 248 48" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="254" y="52" font-size="12" fill="${INK}">出刃の刃元を当てる</text>
+
+        <path d="M200 78 C 174 92, 152 120, 146 152 C 142 180, 145 200, 149 210
+                 L 253 210
+                 C 257 198, 259 174, 253 146 C 246 110, 224 90, 200 78 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+
+        <path d="M190 84 C 194 80, 206 80, 210 84" fill="none" stroke="${GRAY}" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="176" cy="142" r="11" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="176" cy="142" r="4.5" fill="${INK}"/>
+        <path d="M156 182 C 180 194, 222 194, 246 182" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M200 72 L 200 216" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-dasharray="7 5"/>
+
+        <path d="M112 210 L 292 210" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+        <text x="316" y="214" font-size="11" fill="${GRAY}">まな板</text>
+
+        <path d="M212 88 L 276 104" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="282" y="108" font-size="12" fill="${ACCENT}" font-weight="700">上あごの中心</text>
+        <text x="282" y="126" font-size="11" fill="${GRAY}">前歯の間から入れる</text>
+
+        <text x="66" y="108" font-size="12" fill="${INK}" text-anchor="middle">背を叩いて</text>
+        <text x="66" y="126" font-size="12" fill="${INK}" text-anchor="middle">押し進める</text>
+        <text x="66" y="150" font-size="11" fill="${ACCENT}" text-anchor="middle">力任せに叩かない</text>
+      </svg>
+    `,
+  },
+
+  // ブリの部位の分け方
+  "buri-bui": {
+    title: "部位の分け方",
+    caption: "背身は脂が控えめで刺身向き、腹身は脂が多く焼き物向き。カマは頭を落とすときに頭側へ付けておくと分けやすい。中骨と頭はアラとして汁物に使う。",
+    svg: `
+      <svg viewBox="0 0 400 230" role="img" aria-label="ブリの側面図。頭・カマ・背身・腹身・中骨に分ける位置を示している。">
+        <path d="M40 110 C 60 84, 100 66, 150 62 C 210 58, 270 70, 310 92
+                 L 310 128
+                 C 270 150, 210 162, 150 158 C 100 154, 60 136, 40 110 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M310 92 L 356 68 L 344 110 L 356 152 L 310 128 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="62" cy="104" r="5.5" fill="none" stroke="${INK}" stroke-width="2.2"/>
+
+        <path d="M94 72 L 100 150" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-dasharray="6 4"/>
+        <path d="M120 66 L 126 156" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-dasharray="6 4"/>
+        <path d="M126 110 C 190 106, 250 110, 306 112" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-dasharray="6 4"/>
+
+        <path d="M56 46 L 70 92" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="48" y="40" font-size="12" fill="${INK}" text-anchor="middle" font-weight="700">頭</text>
+
+        <path d="M104 196 L 110 152" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="100" y="212" font-size="12" fill="${INK}" text-anchor="middle" font-weight="700">カマ</text>
+
+        <path d="M215 46 L 215 84" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="215" y="40" font-size="13" fill="${INK}" text-anchor="middle" font-weight="700">背身（刺身向き）</text>
+
+        <path d="M215 190 L 215 140" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="215" y="206" font-size="13" fill="${INK}" text-anchor="middle" font-weight="700">腹身（焼き物向き）</text>
+
+        <path d="M330 46 L 256 108" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="344" y="40" font-size="12" fill="${GRAY}" text-anchor="middle">中骨（アラ）</text>
+      </svg>
+    `,
+  },
+
+  // ブリ糸状虫とアニサキスの違い
+  "buri-shijouchuu": {
+    title: "ブリ糸状虫とアニサキスの違い",
+    caption: "赤くて細長いのがブリ糸状虫で、人には寄生せず食べても害はない。白く不透明で渦を巻いているのがアニサキスで、こちらは症状を起こす。見分けは色と形でつく。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="左はブリ糸状虫、右はアニサキスの見え方を切り身の図で比較している。">
+        <rect x="30" y="60" width="140" height="88" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
+        <rect x="30" y="96" width="140" height="18" fill="${LIGHT}" stroke="none"/>
+        <path d="M30 96 L 170 96 M30 114 L 170 114" fill="none" stroke="${GRAY}" stroke-width="1.2"/>
+        <path d="M30 138 L 170 138" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <path d="M44 108 C 66 88, 84 122, 106 100 C 124 82, 140 116, 158 104"
+              fill="none" stroke="${ACCENT}" stroke-width="2.8" stroke-linecap="round"/>
+
+        <text x="100" y="176" font-size="13" fill="${INK}" text-anchor="middle" font-weight="700">ブリ糸状虫</text>
+        <text x="100" y="196" font-size="12" fill="${GRAY}" text-anchor="middle">赤い糸状・血合い付近</text>
+        <text x="100" y="214" font-size="12" fill="${GRAY}" text-anchor="middle">食べても害はない</text>
+
+        <rect x="230" y="60" width="140" height="88" rx="6" fill="#ffffff" stroke="${INK}" stroke-width="2.5"/>
+        <rect x="230" y="96" width="140" height="18" fill="${LIGHT}" stroke="none"/>
+        <path d="M230 96 L 370 96 M230 114 L 370 114" fill="none" stroke="${GRAY}" stroke-width="1.2"/>
+        <path d="M230 138 L 370 138" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+
+        <path d="M300 76 C 322 76, 332 92, 332 104 C 332 118, 318 126, 306 126
+                 C 294 126, 288 118, 288 110 C 288 102, 296 98, 302 100"
+              fill="none" stroke="${INK}" stroke-width="8" stroke-linecap="round"/>
+        <path d="M300 76 C 322 76, 332 92, 332 104 C 332 118, 318 126, 306 126
+                 C 294 126, 288 118, 288 110 C 288 102, 296 98, 302 100"
+              fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+
+        <text x="300" y="176" font-size="13" fill="${INK}" text-anchor="middle" font-weight="700">アニサキス</text>
+        <text x="300" y="196" font-size="12" fill="${GRAY}" text-anchor="middle">白く不透明・渦を巻く</text>
+        <text x="300" y="214" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">症状を起こす</text>
+      </svg>
+    `,
+  },
+
+  // 皮の引き方
+  "suzuki-kawahiki": {
+    title: "皮の引き方",
+    caption: "包丁は寝かせてまな板に押しつけ、ほとんど動かさない。動かすのは左手で持った皮のほう。刃を上に向けると身を削ってしまう。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="柵の皮を引く図。包丁を寝かせて固定し、皮を左手で引っぱる方向を示している。">
+        <path d="M46 144 L 344 144" fill="none" stroke="${INK}" stroke-width="3" stroke-linecap="round"/>
+        <text x="352" y="148" font-size="11" fill="${GRAY}">まな板</text>
+
+        <path d="M120 100 C 180 92, 262 94, 322 102 L 322 126 L 120 126 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <text x="170" y="88" font-size="12" fill="${INK}" text-anchor="middle">身</text>
+
+        <path d="M124 128 L 266 122 L 266 133 L 128 135 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <rect x="266" y="120" width="48" height="15" rx="3" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <path d="M300 118 L 322 76" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="348" y="60" font-size="12" fill="${INK}" text-anchor="end">包丁は寝かせて固定</text>
+        <text x="348" y="78" font-size="11" fill="${GRAY}" text-anchor="end">刃はまな板へ向ける</text>
+
+        <path d="M128 135 C 104 138, 80 140, 56 142" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M56 142 L 68 137 M56 142 L 68 147" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <text x="76" y="176" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">皮を左手で引く</text>
+        <text x="76" y="194" font-size="11" fill="${GRAY}" text-anchor="middle">動かすのはこちら</text>
+      </svg>
+    `,
+  },
+
+  // ぬめりを塩で落とす
+  "nijimasu-numeri": {
+    title: "ぬめりは塩で落とす",
+    caption: "ニジマスの臭みの大半は体表のぬめり。粗塩をふって手でこすると、ぬめりが白く浮いてくる。これを流水で洗い流す。水で流すだけでは取り切れない。",
+    svg: `
+      <svg viewBox="0 0 400 200" role="img" aria-label="ぬめりを落とす3手順の図。塩をふる、手でこする、流水で洗い流す。">
+        <path d="M40 62 l 4 -6 l 3 6 Z M62 56 l 4 -6 l 3 6 Z M84 60 l 4 -6 l 3 6 Z M106 54 l 4 -6 l 3 6 Z"
+              fill="${INK}" stroke="none"/>
+        <text x="76" y="42" font-size="12" fill="${INK}" text-anchor="middle" font-weight="700">粗塩</text>
+        <path d="M42 84 C 58 70, 96 70, 112 84 C 96 98, 58 98, 42 84 Z
+                 M112 84 L 130 74 L 125 84 L 130 94 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <text x="76" y="140" font-size="12" fill="${INK}" text-anchor="middle">① 塩をふる</text>
+        <text x="76" y="158" font-size="11" fill="${GRAY}" text-anchor="middle">全体にまんべんなく</text>
+
+        <path d="M146 84 L 168 84" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M168 84 L 160 79 M168 84 L 160 89" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M182 84 C 198 70, 236 70, 252 84 C 236 98, 198 98, 182 84 Z
+                 M252 84 L 270 74 L 265 84 L 270 94 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <path d="M188 62 C 206 54, 232 54, 248 62" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <path d="M248 62 L 239 59 M248 62 L 241 67" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <path d="M188 62 L 197 59 M188 62 L 195 67" fill="none" stroke="${ACCENT}" stroke-width="2" stroke-linecap="round"/>
+        <text x="216" y="140" font-size="12" fill="${INK}" text-anchor="middle">② 手でこする</text>
+        <text x="216" y="158" font-size="11" fill="${ACCENT}" text-anchor="middle">白く浮いてくる</text>
+
+        <path d="M286 84 L 308 84" fill="none" stroke="${GRAY}" stroke-width="2"/>
+        <path d="M308 84 L 300 79 M308 84 L 300 89" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M330 48 L 328 68 M344 48 L 342 68 M358 48 L 356 68"
+              fill="none" stroke="${GRAY}" stroke-width="1.8" stroke-linecap="round"/>
+        <text x="344" y="42" font-size="11" fill="${GRAY}" text-anchor="middle">流水</text>
+        <path d="M310 90 C 324 78, 354 78, 366 90 C 354 102, 324 102, 310 90 Z
+                 M366 90 L 384 81 L 379 90 L 384 99 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <text x="344" y="140" font-size="12" fill="${INK}" text-anchor="middle">③ 洗い流す</text>
+        <text x="344" y="158" font-size="11" fill="${GRAY}" text-anchor="middle">ざらつきが残れば再度</text>
+      </svg>
+    `,
+  },
 };
 
 module.exports = { FIGURES };
