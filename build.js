@@ -76,6 +76,29 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
 `;
 }
 
+// レシピの種別と系統。構造化データの recipeCategory / recipeCuisine に使う。
+// 同じ料理名が魚をまたいで共通なので slug をキーにする。
+// ここに無いものは「主菜」「日本料理」として扱う。
+const RECIPE_CATEGORY = {
+  sashimi: "前菜", carpaccio: "前菜", namerou: "前菜", tataki: "前菜",
+  "shime-saba": "前菜", kunsei: "前菜",
+  arajiru: "汁物", misoshiru: "汁物", tsumirejiru: "汁物",
+  "tai-meshi": "主食",
+};
+
+const RECIPE_CUISINE = {
+  "acqua-pazza": "イタリア料理", carpaccio: "イタリア料理",
+  munieru: "フランス料理", meuniere: "フランス料理", saute: "フランス料理",
+};
+
+// 手順の見出し（HowToStep.name）。最初の一文を句点なしで切り出す。
+// 読点で切ると「頭を落とし」のような連用形止めになり見出しとして不自然なので、
+// 文の区切りまでを使う。手順が一文だけなら text と同じになる。
+function stepName(text) {
+  const head = text.match(/^[^。]+/);
+  return head ? head[0] : text;
+}
+
 function buildRecipePage(fish, recipe) {
   const url = `${SITE_URL}/recipe/${fish.slug}-${recipe.slug}/`;
   const description = `${fish.name}で作る「${recipe.name}」のレシピ。${recipe.servings}・調理時間${recipe.time}。材料と作り方をわかりやすく紹介します。`;
@@ -90,7 +113,17 @@ function buildRecipePage(fish, recipe) {
     description,
     recipeYield: recipe.servings,
     recipeIngredient: recipe.ingredients,
-    recipeInstructions: recipe.steps.map(s => ({ "@type": "HowToStep", text: s })),
+    recipeCategory: RECIPE_CATEGORY[recipe.slug] || "主菜",
+    recipeCuisine: RECIPE_CUISINE[recipe.slug] || "日本料理",
+    keywords: [fish.name, "釣った魚", ...recipe.places, ...recipe.seasonings].join(", "),
+    // 各手順に見出しとアンカーURLを持たせる（構造化データの推奨項目）。
+    // アンカー先は本文の <li id="step-N"> と一致させている。
+    recipeInstructions: recipe.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      name: stepName(s),
+      text: s,
+      url: `${url}#step-${i + 1}`,
+    })),
   };
   const totalTime = parseTimeToISO(recipe.time);
   if (totalTime) structuredData.totalTime = totalTime;
@@ -122,7 +155,7 @@ function buildRecipePage(fish, recipe) {
     <div class="detail-section">
       <h2>作り方</h2>
       <ol class="steps-list">
-        ${recipe.steps.map(s => `<li>${s}</li>`).join("")}
+        ${recipe.steps.map((s, i) => `<li id="step-${i + 1}">${s}</li>`).join("")}
       </ol>
     </div>
     ${amazonLinks ? `<div class="detail-section"><h2>この料理に使う調味料・道具</h2><div class="amazon-links">${amazonLinks}</div><p class="amazon-note">Amazonの検索結果が新しいタブで開きます</p></div>` : ""}
