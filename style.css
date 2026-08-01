@@ -234,42 +234,72 @@ header .tagline { display: none; }
   opacity: 0;
   will-change: transform, opacity;
   animation-name: fishLeap;
-  animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  /* 緩急はキーフレーム側で区間ごとに指定する。ここで ease-in-out を一括指定すると
+     キーフレームごとに減速と加速を繰り返してカクついて見える。 */
+  animation-timing-function: linear;
 }
 
 .hero-fish .jumper-1 {
-  left: 16%;
+  left: 14%;
   bottom: 46px;
-  animation-duration: 11s;
-  animation-delay: 1.5s;
+  animation-duration: 5s;
 }
 
 .hero-fish .jumper-2 {
-  left: 58%;
+  left: 57%;
   bottom: 58px;
   width: 33px;
   height: 17px;
-  animation-duration: 14s;
-  animation-delay: 6s;
+  animation-duration: 6.5s;
+  animation-delay: 2s;
 }
 
 .hero-fish .jumper-3 {
-  left: 37%;
+  left: 36%;
   bottom: 70px;
   width: 24px;
   height: 12px;
-  animation-duration: 17s;
-  animation-delay: 11s;
+  animation-duration: 8s;
+  animation-delay: 4s;
 }
 
+.hero-fish .jumper-4 {
+  left: 78%;
+  bottom: 50px;
+  width: 38px;
+  height: 19px;
+  animation-duration: 9.5s;
+  animation-delay: 6.5s;
+}
+
+/* 放物線に合わせて区間ごとに緩急を変える。
+   上昇は減速（ease-out 系）、下降は加速（ease-in 系）。 */
 @keyframes fishLeap {
-  0%, 84%  { transform: translate(0, 52px) rotate(-42deg); opacity: 0; }
-  86%      { transform: translate(3px, 30px) rotate(-38deg); opacity: 1; }
-  90%      { transform: translate(14px, -30px) rotate(-10deg); opacity: 1; }
-  93%      { transform: translate(22px, -44px) rotate(14deg); opacity: 1; }
-  96%      { transform: translate(31px, -18px) rotate(46deg); opacity: 1; }
-  100%     { transform: translate(44px, 52px) rotate(76deg); opacity: 0; }
+  0%, 76% {
+    transform: translate(0, 54px) rotate(-46deg);
+    opacity: 0;
+    animation-timing-function: cubic-bezier(.12, .58, .32, 1);
+  }
+  79% {
+    transform: translate(4px, 26px) rotate(-38deg);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(.16, .62, .36, 1);
+  }
+  88% {
+    transform: translate(22px, -48px) rotate(2deg);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(.55, 0, .85, .42);
+  }
+  97% {
+    transform: translate(40px, 22px) rotate(52deg);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(.55, 0, .9, .5);
+  }
+  100% {
+    transform: translate(46px, 54px) rotate(66deg);
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
