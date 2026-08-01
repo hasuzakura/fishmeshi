@@ -1,20 +1,24 @@
 /* Fish Meshi — ダークテーマ
-   配色は「深い夜の海」。背景は黒に近いチャコール、アクセントは魚の鮮度を思わせるターコイズ。
+   背景は青みのあるスレート、アクセントは晴れた日の海を思わせる水色。
    図解SVG（黒線・白地）は白カードのまま置き、暗い背景に浮かせて見せる。 */
 
 :root {
-  --bg: #0a0c0e;
-  --bg-2: #0f1215;
-  --surface: #15191d;
-  --surface-2: #1c2126;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.18);
-  --text: #eef1f4;
-  --text-dim: #98a2ab;
-  --text-faint: #6b757e;
-  --accent: #3ad6b8;
-  --accent-deep: #1fae93;
-  --accent-soft: rgba(58, 214, 184, 0.12);
+  --bg: #16212c;
+  --bg-2: #1b2833;
+  --surface: #223140;
+  --surface-2: #2b3d4d;
+  --border: rgba(255, 255, 255, 0.13);
+  --border-strong: rgba(255, 255, 255, 0.26);
+  --text: #f4f8fb;
+  --text-dim: #b3c0cc;
+  --text-faint: #8a99a7;
+  /* アクセントは「晴れた日の海」。ダーク背景で沈まないよう明度を高めに取る */
+  --accent: #3fc4f7;
+  --accent-deep: #1c93c8;
+  --accent-soft: rgba(63, 196, 247, 0.13);
+  --accent-glow: rgba(63, 196, 247, 0.24);
+  --accent-line: rgba(63, 196, 247, 0.42);
+  --on-accent: #042330;
   --amber: #ff9f43;
   --danger: #ff6b6b;
   --radius: 12px;
@@ -43,7 +47,7 @@ body {
 
 a { color: var(--accent); }
 
-::selection { background: var(--accent); color: #06251f; }
+::selection { background: var(--accent); color: var(--on-accent); }
 
 /* ---------- ヘッダー（全ページ共通のスリムバー） ---------- */
 .site-header,
@@ -51,7 +55,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(10, 12, 14, 0.82);
+  background: rgba(22, 33, 44, 0.86);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--border);
@@ -112,15 +116,15 @@ header .tagline { display: none; }
   padding: 92px 0 72px;
 }
 
-/* 写真は彩度を落として敷く。夕焼けの色が残るとアクセントのターコイズと濁るため。 */
+/* 写真は彩度を落として敷く。夕焼けの色が残るとアクセントの水色と濁るため。 */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(8,12,15,0.5) 0%, rgba(8,12,15,0.88) 62%, var(--bg) 100%),
+    linear-gradient(180deg, rgba(21,84,124,0.5) 0%, rgba(22,33,44,0.78) 60%, var(--bg) 100%),
     url('https://images.unsplash.com/photo-1568134679623-f22524327f79?w=1600&q=80&fit=crop&auto=format') center 40% / cover no-repeat;
-  filter: grayscale(0.72) contrast(1.06);
+  filter: grayscale(0.62) brightness(1.2) contrast(1.02);
 }
 
 .hero::after {
@@ -283,7 +287,7 @@ main { padding: 36px 0 96px; }
 
 .fish-btn.selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent), 0 6px 20px rgba(58,214,184,0.18);
+  box-shadow: 0 0 0 1px var(--accent), 0 6px 20px var(--accent-glow);
 }
 
 .fish-name {
@@ -332,7 +336,7 @@ main { padding: 36px 0 96px; }
 
 .place-btn.selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent), 0 6px 20px rgba(58,214,184,0.18);
+  box-shadow: 0 0 0 1px var(--accent), 0 6px 20px var(--accent-glow);
 }
 
 .place-name {
@@ -409,7 +413,7 @@ main { padding: 36px 0 96px; }
   cursor: pointer;
   border: 1px solid var(--accent);
   background: var(--accent);
-  color: #06251f;
+  color: var(--on-accent);
   transition: opacity 0.15s, background 0.15s;
 }
 
@@ -451,14 +455,14 @@ main { padding: 36px 0 96px; }
 .seasoning-btn.selected {
   border-color: var(--accent);
   background: var(--accent);
-  color: #06251f;
+  color: var(--on-accent);
 }
 
 .generate-btn {
   width: 100%;
   padding: 16px;
   background: var(--accent);
-  color: #06251f;
+  color: var(--on-accent);
   border: none;
   border-radius: var(--radius-sm);
   font-family: inherit;
@@ -467,10 +471,10 @@ main { padding: 36px 0 96px; }
   letter-spacing: 0.02em;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 6px 24px rgba(58,214,184,0.22);
+  box-shadow: 0 6px 24px var(--accent-glow);
 }
 
-.generate-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(58,214,184,0.3); }
+.generate-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(63,196,247,0.34); }
 
 /* ---------- 結果 ---------- */
 #results { animation: fadeIn 0.25s ease; }
@@ -884,7 +888,7 @@ footer a:hover { color: var(--accent); }
 .legal-body a {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid rgba(58,214,184,0.4);
+  border-bottom: 1px solid var(--accent-line);
 }
 
 .legal-body a:hover { border-bottom-color: var(--accent); }
@@ -1040,7 +1044,7 @@ footer a:hover { color: var(--accent); }
   background: var(--accent);
   border: none;
   border-radius: var(--radius-sm);
-  color: #06251f;
+  color: var(--on-accent);
   font-family: inherit;
   font-size: 14px;
   font-weight: 800;
