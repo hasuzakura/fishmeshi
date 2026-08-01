@@ -230,7 +230,8 @@ header .tagline { display: none; }
   position: absolute;
   width: 46px;
   height: 23px;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 32'%3E%3Cpath d='M3,16 C11,5 33,2 45,10 L61,1 L56,16 L61,31 L45,22 C33,30 11,27 3,16 Z' fill='%23bdeeff'/%3E%3Ccircle cx='15' cy='13' r='1.7' fill='%230e2a40'/%3E%3C/svg%3E") no-repeat center / contain;
+  /* 頭が右（進行方向）を向くよう左右反転させている。反転しないと尾から跳んで尾から着水する。 */
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 32'%3E%3Cg transform='translate(64,0) scale(-1,1)'%3E%3Cpath d='M3,16 C11,5 33,2 45,10 L61,1 L56,16 L61,31 L45,22 C33,30 11,27 3,16 Z' fill='%23bdeeff'/%3E%3Ccircle cx='15' cy='13' r='1.7' fill='%230e2a40'/%3E%3C/g%3E%3C/svg%3E") no-repeat center / contain;
   opacity: 0;
   will-change: transform, opacity;
   animation-name: fishLeap;
