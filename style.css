@@ -1,17 +1,18 @@
-/* Fish Meshi — ダークテーマ
-   背景は青みのあるスレート、アクセントは晴れた日の海を思わせる水色。
-   図解SVG（黒線・白地）は白カードのまま置き、暗い背景に浮かせて見せる。 */
+/* Fish Meshi — 海のダークテーマ
+   背景は水中を見上げたときの色。上ほど明るい水色、下へ行くほど深い青。
+   アクセントは晴れた日の海の水色。
+   図解SVG（黒線・白地）は白カードのまま置き、暗い水面に浮かせて見せる。 */
 
 :root {
-  --bg: #16212c;
-  --bg-2: #1b2833;
-  --surface: #223140;
-  --surface-2: #2b3d4d;
-  --border: rgba(255, 255, 255, 0.13);
-  --border-strong: rgba(255, 255, 255, 0.26);
-  --text: #f4f8fb;
-  --text-dim: #b3c0cc;
-  --text-faint: #8a99a7;
+  --bg: #0e2a40;
+  --bg-2: #0a2033;
+  --surface: #143a56;
+  --surface-2: #1b4a6b;
+  --border: rgba(126, 205, 240, 0.18);
+  --border-strong: rgba(126, 205, 240, 0.36);
+  --text: #eff8fd;
+  --text-dim: #a9c6da;
+  --text-faint: #7ea0b8;
   /* アクセントは「晴れた日の海」。ダーク背景で沈まないよう明度を高めに取る */
   --accent: #3fc4f7;
   --accent-deep: #1c93c8;
@@ -30,9 +31,16 @@
 
 html { -webkit-text-size-adjust: 100%; }
 
+/* 水中を見上げたときの光の入り方を背景に敷く。
+   上ほど明るい水色、下へ行くほど深い青。スクロールしても動かないよう fixed。 */
 body {
   font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', Meiryo, sans-serif;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1100px 520px at 50% -160px, rgba(93, 213, 255, 0.22), transparent 66%),
+    linear-gradient(180deg, #164a6e 0%, #0e2a40 40%, #08192a 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
@@ -55,7 +63,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(22, 33, 44, 0.86);
+  background: rgba(11, 34, 52, 0.86);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
   border-bottom: 1px solid var(--border);
@@ -111,35 +119,54 @@ header .tagline { display: none; }
 .hero {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  padding: 92px 0 72px;
+  background: transparent;
+  padding: 92px 0 96px;
 }
 
-/* 写真は彩度を落として敷く。夕焼けの色が残るとアクセントの水色と濁るため。 */
+/* 写真は彩度を落として青いベールを重ね、海の色に寄せる */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(21,84,124,0.5) 0%, rgba(22,33,44,0.78) 60%, var(--bg) 100%),
-    url('https://images.unsplash.com/photo-1568134679623-f22524327f79?w=1600&q=80&fit=crop&auto=format') center 40% / cover no-repeat;
-  filter: grayscale(0.62) brightness(1.2) contrast(1.02);
+  background: url('https://images.unsplash.com/photo-1568134679623-f22524327f79?w=1600&q=80&fit=crop&auto=format') center 40% / cover no-repeat;
+  /* 夕焼けの色を完全に抜いてから青を重ねる。そのままだとオレンジが残って水に見えない。 */
+  filter: grayscale(1) brightness(1.24) contrast(1.04);
 }
 
+/* 青のベール（写真を海の色に染める） */
+.hero .hero-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(26,124,176,0.66) 0%, rgba(16,72,108,0.8) 52%, rgba(14,42,64,0.97) 100%);
+  pointer-events: none;
+}
+
+/* 水面のきらめき */
 .hero::after {
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -180px;
-  width: 620px;
-  height: 320px;
+  top: -240px;
+  width: 900px;
+  height: 460px;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, var(--accent-soft), transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(120, 220, 255, 0.22), transparent 66%);
   pointer-events: none;
 }
 
 .hero .container { position: relative; z-index: 1; }
+
+/* ヒーローと本文の境目を波にする。fill の色は --bg（#0e2a40）と揃えること。 */
+.hero-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 58px;
+  z-index: 1;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 58' preserveAspectRatio='none'%3E%3Cpath d='M0,26 C120,54 260,4 400,22 C540,40 660,52 800,30 C920,12 1060,6 1200,24 L1200,58 L0,58 Z' fill='%230e2a40'/%3E%3C/svg%3E") repeat-x bottom center / 1200px 58px;
+  pointer-events: none;
+}
 
 .hero-eyebrow {
   font-size: 11px;
@@ -710,7 +737,7 @@ main { padding: 36px 0 96px; }
 
 /* ---------- フッター ---------- */
 footer {
-  background: var(--bg-2);
+  background: linear-gradient(180deg, rgba(8,25,42,0.55) 0%, rgba(6,20,34,0.9) 100%);
   border-top: 1px solid var(--border);
   text-align: center;
   padding: 40px 16px 48px;
