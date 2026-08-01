@@ -215,6 +215,67 @@ header .tagline { display: none; }
   to { transform: translateX(-50%); }
 }
 
+/* ---------- 跳ねる魚 ----------
+   .hero-fish は .hero-wave より前（DOM順で先）に置く。波が z-index:1 なので、
+   魚は普段は波の裏に隠れ、跳ねたときだけ水面の上に出る。
+   1周期の大半は水中（opacity:0）で、終盤にだけ跳ねる。 */
+.hero-fish {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-fish .jumper {
+  position: absolute;
+  width: 46px;
+  height: 23px;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 32'%3E%3Cpath d='M3,16 C11,5 33,2 45,10 L61,1 L56,16 L61,31 L45,22 C33,30 11,27 3,16 Z' fill='%23bdeeff'/%3E%3Ccircle cx='15' cy='13' r='1.7' fill='%230e2a40'/%3E%3C/svg%3E") no-repeat center / contain;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation-name: fishLeap;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.hero-fish .jumper-1 {
+  left: 16%;
+  bottom: 46px;
+  animation-duration: 11s;
+  animation-delay: 1.5s;
+}
+
+.hero-fish .jumper-2 {
+  left: 58%;
+  bottom: 58px;
+  width: 33px;
+  height: 17px;
+  animation-duration: 14s;
+  animation-delay: 6s;
+}
+
+.hero-fish .jumper-3 {
+  left: 37%;
+  bottom: 70px;
+  width: 24px;
+  height: 12px;
+  animation-duration: 17s;
+  animation-delay: 11s;
+}
+
+@keyframes fishLeap {
+  0%, 84%  { transform: translate(0, 52px) rotate(-42deg); opacity: 0; }
+  86%      { transform: translate(3px, 30px) rotate(-38deg); opacity: 1; }
+  90%      { transform: translate(14px, -30px) rotate(-10deg); opacity: 1; }
+  93%      { transform: translate(22px, -44px) rotate(14deg); opacity: 1; }
+  96%      { transform: translate(31px, -18px) rotate(46deg); opacity: 1; }
+  100%     { transform: translate(44px, 52px) rotate(76deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fish { display: none; }
+}
+
 /* 動きを減らす設定の環境では止める */
 @media (prefers-reduced-motion: reduce) {
   .hero-wave .wave { animation: none; }
