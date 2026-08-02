@@ -57,7 +57,8 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
            フッターと魚別ページからは辿れる。書き足すようになったらここに戻す。 -->
       <nav class="site-nav">
         <a href="/recipes/">レシピ</a>
-        <a href="/guide/">解説</a>
+        <a href="/guide/">さばき方</a>
+        <a href="/guide/hozon/">保存</a>
       </nav>
     </div>
   </header>
@@ -70,7 +71,7 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
     <div class="container">
       <p>© 2026 ${SITE_NAME}</p>
       <p class="footer-note">掲載レシピはオリジナルコンテンツです</p>
-      <p class="footer-note"><a href="/">魚から探す</a> ｜ <a href="/recipes/">レシピ一覧</a> ｜ <a href="/guide/">解説</a> ｜ <a href="/diary/">釣行記</a></p>
+      <p class="footer-note"><a href="/">魚から探す</a> ｜ <a href="/recipes/">レシピ一覧</a> ｜ <a href="/guide/">さばき方</a> ｜ <a href="/guide/hozon/">持ち帰り・保存</a> ｜ <a href="/diary/">釣行記</a></p>
       <p class="footer-note"><a href="/about/">運営者情報</a> ｜ <a href="/privacy/">プライバシーポリシー</a> ｜ <a href="/disclaimer/">免責事項</a> ｜ <a href="/contact/">お問い合わせ</a></p>
       <p class="footer-note">${AMAZON_DISCLOSURE}</p>
     </div>
@@ -80,6 +81,33 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
 </html>
 `;
 }
+
+// 解説記事のカテゴリ。data.js の GUIDES[].category が未指定なら "sabaki" 扱い。
+// 記事のURLは /guide/<slug>/ のまま変えていない（インデックス済みのため）。一覧ページだけ2つに分ける。
+const GUIDE_CATEGORIES = {
+  sabaki: {
+    label: "さばき方",
+    heading: "魚のさばき方",
+    sub: "三枚おろし・刺身の切り方・魚別の下処理。料理より前の工程で味は決まります",
+    description: "三枚おろしの基本、出刃包丁の選び方、刺身の切り方、魚別の下処理を図解つきで解説しています。",
+    url: "/guide/",
+    file: "guide/index.html",
+    otherLabel: "持ち帰り・保存",
+    otherUrl: "/guide/hozon/",
+    otherLinkText: "釣り場からの持ち帰り方・冷凍・干物の記事はこちら",
+  },
+  hozon: {
+    label: "持ち帰り・保存",
+    heading: "持ち帰りと保存",
+    sub: "釣り場から台所まで、そして食べきれない分をどうするか",
+    description: "潮氷の作り方と締め方、淡水魚の持ち帰り、冷凍と解凍のしかた、干物の作り方を図解つきで解説しています。",
+    url: "/guide/hozon/",
+    file: "guide/hozon/index.html",
+    otherLabel: "さばき方",
+    otherUrl: "/guide/",
+    otherLinkText: "三枚おろし・刺身の切り方・魚別の下処理はこちら",
+  },
+};
 
 // レシピの種別と系統。構造化データの recipeCategory / recipeCuisine に使う。
 // 同じ料理名が魚をまたいで共通なので slug をキーにする。
@@ -192,7 +220,7 @@ function buildFishPage(fish) {
   const guides = GUIDES.filter(g => g.fish === fish.name);
   const guideSection = guides.length
     ? `<div class="detail-section">
-        <h2>この魚の解説記事</h2>
+        <h2>この魚のさばき方</h2>
         <div class="index-list">
           ${guides.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
         </div>
@@ -414,6 +442,7 @@ function renderGuideBlock(block) {
 function buildGuidePage(guide) {
   const url = `${SITE_URL}/guide/${guide.slug}/`;
   const relatedFish = FISH_LIST.find(f => f.name === guide.fish);
+  const cat = GUIDE_CATEGORIES[guide.category || "sabaki"];
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -452,16 +481,16 @@ function buildGuidePage(guide) {
         <h2>関連</h2>
         <div class="index-list">
           <a href="/fish/${relatedFish.slug}/">${relatedFish.name}のレシピ一覧を見る</a>
-          <a href="/guide/">他の解説記事を読む</a>
+          <a href="${cat.url}">${cat.label}の記事一覧</a>
         </div>
       </div>`
     : `<div class="detail-section">
         <h2>関連</h2>
-        <div class="index-list"><a href="/guide/">他の解説記事を読む</a></div>
+        <div class="index-list"><a href="${cat.url}">${cat.label}の記事一覧</a></div>
       </div>`;
 
   const body = `
-    <div class="breadcrumb"><a href="/">トップ</a> &gt; <a href="/guide/">解説</a> &gt; ${guide.title}</div>
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; <a href="${cat.url}">${cat.label}</a> &gt; ${guide.title}</div>
     <div class="detail-header">
       <h1>${guide.title}</h1>
       <div class="recipe-meta">${guide.date}｜${OPERATOR_NAME}</div>
@@ -485,29 +514,33 @@ function buildGuidePage(guide) {
   return url;
 }
 
-function buildGuideIndexPage() {
-  const url = `${SITE_URL}/guide/`;
-  const description = "魚の下処理・保存・持ち帰り方など、釣った魚を美味しく食べるための解説記事をまとめています。";
+function buildGuideIndexPage(category) {
+  const cat = GUIDE_CATEGORIES[category];
+  const items = GUIDES.filter(g => (g.category || "sabaki") === category);
 
   const body = `
-    <div class="breadcrumb"><a href="/">トップ</a> &gt; 解説</div>
+    <div class="breadcrumb"><a href="/">トップ</a> &gt; ${cat.label}</div>
     <div class="detail-header">
-      <h1>解説</h1>
-      <p class="step-sub">下処理・保存・持ち帰り方など、料理の前に知っておきたいこと</p>
+      <h1>${cat.heading}</h1>
+      <p class="step-sub">${cat.sub}</p>
     </div>
     <div class="index-list">
-      ${GUIDES.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
+      ${items.map(g => `<a href="/guide/${g.slug}/">${g.title}</a>`).join("")}
+    </div>
+    <div class="detail-section">
+      <h2>${cat.otherLabel}</h2>
+      <div class="index-list"><a href="${cat.otherUrl}">${cat.otherLinkText}</a></div>
     </div>
   `;
 
-  writeFile("guide/index.html", layout({
-    title: `解説 - ${SITE_NAME}`,
-    description,
-    canonical: url,
+  writeFile(cat.file, layout({
+    title: `${cat.heading} - ${SITE_NAME}`,
+    description: cat.description,
+    canonical: `${SITE_URL}${cat.url}`,
     bodyHtml: body,
   }));
 
-  return url;
+  return `${SITE_URL}${cat.url}`;
 }
 
 // 運営者情報・プライバシーポリシー・免責事項など、本文が固定のページを組み立てる
@@ -843,7 +876,8 @@ function main() {
 
   urls.push(buildRecipesIndexPage());
 
-  urls.push(buildGuideIndexPage());
+  urls.push(buildGuideIndexPage("sabaki"));
+  urls.push(buildGuideIndexPage("hozon"));
   GUIDES.forEach(guide => {
     urls.push(buildGuidePage(guide));
   });

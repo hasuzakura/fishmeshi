@@ -1061,6 +1061,277 @@ const FIGURES = {
       </svg>
     `,
   },
+
+  // 三枚おろしの切る順序
+  "sanmai-junjo": {
+    title: "切り込みを入れる順序",
+    caption: "背側から一本、腹側から一本。どちらも一度で切り離さず、浅い切り込みを3回ほど繰り返して背骨まで届かせる。最後に中骨の上を通して身を外す。",
+    svg: `
+      <svg viewBox="0 0 400 230" role="img" aria-label="頭を落とした魚の側面図。背側と腹側から切り込みを入れ、最後に中骨の上を通す順序を示している。">
+        <path d="M60 66 C 120 58, 200 62, 262 78 C 292 86, 312 96, 324 106
+                 L 324 118
+                 C 312 128, 292 138, 262 146 C 200 162, 120 166, 60 158 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M324 106 L 360 86 L 351 112 L 360 138 L 324 118 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M60 66 L 60 158" fill="none" stroke="${GRAY}" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="42" y="112" font-size="11" fill="${GRAY}" text-anchor="middle">頭側</text>
+
+        <path d="M74 84 C 140 76, 210 82, 294 100" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M294 100 L 282 94 M294 100 L 283 105" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="60" cy="40" r="11" fill="${ACCENT}"/>
+        <text x="60" y="45" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">1</text>
+        <path d="M72 44 L 150 78" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="160" y="36" font-size="12" fill="${INK}" font-weight="700">背側から</text>
+
+        <path d="M74 140 C 140 148, 210 142, 294 124" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M294 124 L 282 130 M294 124 L 283 119" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="60" cy="186" r="11" fill="${ACCENT}"/>
+        <text x="60" y="191" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">2</text>
+        <path d="M72 182 L 150 146" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="160" y="198" font-size="12" fill="${INK}" font-weight="700">腹側から</text>
+
+        <path d="M96 112 C 170 108, 250 112, 314 112" fill="none" stroke="${GRAY}" stroke-width="2" stroke-dasharray="6 5"/>
+        <circle cx="80" cy="112" r="11" fill="${INK}"/>
+        <text x="80" y="117" font-size="13" fill="#ffffff" text-anchor="middle" font-weight="700">3</text>
+        <text x="300" y="180" font-size="11" fill="${GRAY}" text-anchor="middle">中骨の上を通す</text>
+
+        <text x="200" y="220" font-size="12" fill="${GRAY}" text-anchor="middle">1と2はそれぞれ浅い切り込みを3回繰り返す</text>
+      </svg>
+    `,
+  },
+
+  // 中骨の上を通すときの包丁の角度
+  "sanmai-hocho-kaku": {
+    title: "中骨に沿わせる角度",
+    caption: "包丁を寝かせ、中骨の上面に当てながら滑らせる。骨から浮くと身が骨に残り、寝かせが足りないと骨を削る。押さずに引いて切る。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="左は包丁が骨から浮いた悪い例、右は骨に沿わせた良い例の断面比較図。">
+        <path d="M200 30 L 200 160" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+        <text x="100" y="34" font-size="18" fill="${ACCENT}" font-weight="700" text-anchor="middle">✕</text>
+        <text x="300" y="34" font-size="18" fill="${INK}" font-weight="700" text-anchor="middle">○</text>
+
+        <path d="M28 120 L 172 120 L 172 132 L 28 132 Z" fill="${LIGHT}" stroke="${INK}" stroke-width="2"/>
+        <text x="100" y="150" font-size="11" fill="${GRAY}" text-anchor="middle">中骨</text>
+        <path d="M28 78 C 70 68, 130 70, 172 80 L 172 120 L 28 120 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M44 112 L 158 106 L 158 120 L 44 120 Z" fill="rgba(176,0,32,0.16)" stroke="none"/>
+        <path d="M40 104 L 158 96 L 158 106 L 44 112 Z"
+              fill="#f0f0f0" stroke="${ACCENT}" stroke-width="2.2" stroke-linejoin="round"/>
+        <text x="104" y="118" font-size="10" fill="${ACCENT}" text-anchor="middle" font-weight="700">残る身</text>
+        <text x="100" y="176" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">骨から浮いている</text>
+        <text x="100" y="194" font-size="11" fill="${GRAY}" text-anchor="middle">身が骨に残る</text>
+
+        <path d="M228 120 L 372 120 L 372 132 L 228 132 Z" fill="${LIGHT}" stroke="${INK}" stroke-width="2"/>
+        <text x="300" y="150" font-size="11" fill="${GRAY}" text-anchor="middle">中骨</text>
+        <path d="M228 78 C 270 68, 330 70, 372 80 L 372 120 L 228 120 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M238 116 L 358 114 L 358 122 L 240 124 Z"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <text x="300" y="176" font-size="12" fill="${INK}" text-anchor="middle" font-weight="700">骨に当てて滑らせる</text>
+        <text x="300" y="194" font-size="11" fill="${GRAY}" text-anchor="middle">身が残らない</text>
+      </svg>
+    `,
+  },
+
+  // 壺抜き
+  "mebaru-tsubonuki": {
+    title: "壺抜き（腹を開かずに抜く）",
+    caption: "口から菜箸を2本入れ、エラを挟んでねじりながら引き出すと、内臓が一緒に付いてくる。肛門に浅く切り込みを入れておくと切れずに抜ける。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="魚の側面図。口から菜箸を入れてエラと内臓をまとめて引き抜く様子を示している。">
+        <path d="M34 112 C 44 88, 66 70, 96 64 C 140 54, 210 60, 258 76 C 292 88, 314 98, 330 108
+                 L 330 118
+                 C 314 128, 292 140, 258 152 C 210 168, 140 174, 96 164 C 66 158, 44 138, 34 116 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M330 108 L 372 88 L 362 113 L 372 138 L 330 118 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="66" cy="102" r="9" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="66" cy="102" r="4" fill="${INK}"/>
+        <path d="M88 78 C 100 100, 100 130, 88 152" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M104 108 C 122 96, 146 100, 152 116 C 156 132, 138 142, 122 136 C 108 130, 100 120, 104 108 Z"
+              fill="${LIGHT}" stroke="${GRAY}" stroke-width="1.8"/>
+        <text x="128" y="160" font-size="11" fill="${GRAY}" text-anchor="middle">エラ・内臓</text>
+
+        <path d="M14 114 L 130 116 M14 132 L 130 124" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linecap="round"/>
+        <text x="46" y="84" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">菜箸2本</text>
+        <path d="M46 90 L 60 110" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+
+        <path d="M60 138 C 40 152, 26 160, 14 164" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M14 164 L 26 162 M14 164 L 24 170" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="60" y="188" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">ねじりながら引く</text>
+
+        <path d="M232 152 L 240 168" fill="none" stroke="${ACCENT}" stroke-width="3" stroke-linecap="round"/>
+        <path d="M244 178 L 300 190" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="296" y="196" font-size="11" fill="${GRAY}" text-anchor="middle">肛門に浅く切り込み</text>
+      </svg>
+    `,
+  },
+
+  // 飾り包丁
+  "mebaru-kazari": {
+    title: "煮付け用の飾り包丁",
+    caption: "身の厚い中央に、斜めの切り込みを1〜2本。深さは中骨に当たる手前まで。火の通りが均一になり、煮汁の味が入る。深すぎると煮崩れる。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="魚の側面図に、身の中央へ斜めに入れる飾り包丁の位置と深さを示している。">
+        <path d="M34 112 C 44 88, 66 70, 96 64 C 140 54, 210 60, 258 76 C 292 88, 314 98, 330 108
+                 L 330 118
+                 C 314 128, 292 140, 258 152 C 210 168, 140 174, 96 164 C 66 158, 44 138, 34 116 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M330 108 L 372 88 L 362 113 L 372 138 L 330 118 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <circle cx="66" cy="102" r="8" fill="none" stroke="${INK}" stroke-width="2.5"/>
+        <circle cx="66" cy="102" r="3.5" fill="${INK}"/>
+        <path d="M88 78 C 100 100, 100 130, 88 152" fill="none" stroke="${GRAY}" stroke-width="2"/>
+
+        <path d="M96 112 C 160 108, 240 110, 316 113" fill="none" stroke="${LIGHT}" stroke-width="2" stroke-dasharray="5 4"/>
+        <text x="200" y="132" font-size="10" fill="${GRAY}" text-anchor="middle">中骨</text>
+
+        <path d="M172 78 L 152 108" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M212 82 L 192 110" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+
+        <path d="M182 74 L 200 44" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="220" y="38" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">斜めに1〜2本</text>
+
+        <path d="M156 112 L 130 176" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="112" y="192" font-size="12" fill="${INK}" text-anchor="middle">中骨に当たる手前まで</text>
+        <text x="112" y="210" font-size="11" fill="${ACCENT}" text-anchor="middle">深すぎると煮崩れる</text>
+      </svg>
+    `,
+  },
+
+  // 出刃のサイズ
+  "deba-size": {
+    title: "刃渡りの選び方",
+    caption: "家庭で一本だけ持つなら150〜165mm。小出刃で大型魚をさばくと骨に負けて刃が欠ける。長すぎる包丁はまな板からはみ出して扱いにくい。",
+    svg: `
+      <svg viewBox="0 0 400 220" role="img" aria-label="出刃包丁の刃渡り3種類と、それぞれが向く魚の大きさを比較した図。">
+        <path d="M40 44 L 152 44 L 162 54 L 152 64 L 40 64 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="20" y="46" width="22" height="16" rx="3" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <text x="176" y="50" font-size="12" fill="${INK}" font-weight="700">105〜120mm</text>
+        <text x="176" y="66" font-size="11" fill="${GRAY}">アジ・イワシ・キス・メバル（30cm以下）</text>
+
+        <path d="M40 104 L 196 104 L 208 114 L 196 124 L 40 124 Z"
+              fill="#ffffff" stroke="${ACCENT}" stroke-width="2.5" stroke-linejoin="round"/>
+        <rect x="20" y="106" width="22" height="16" rx="3" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <text x="222" y="110" font-size="12" fill="${ACCENT}" font-weight="700">150〜165mm</text>
+        <text x="222" y="126" font-size="11" fill="${GRAY}">サバ・タイ・スズキ（50cmまで）</text>
+
+        <path d="M40 164 L 232 164 L 246 174 L 232 184 L 40 184 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="20" y="166" width="22" height="16" rx="3" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <text x="260" y="170" font-size="12" fill="${INK}" font-weight="700">180mm〜</text>
+        <text x="260" y="186" font-size="11" fill="${GRAY}">ブリ・大型青物</text>
+
+        <text x="222" y="144" font-size="11" fill="${ACCENT}" font-weight="700">一本だけ持つならこのサイズ</text>
+      </svg>
+    `,
+  },
+
+  // 研ぎの角度と返り
+  "deba-togi": {
+    title: "研ぐ角度と返りの確認",
+    caption: "刃の背を10円玉2枚分ほど浮かせた角度（約15度）を保って研ぐ。刃先の反対側にざらつき（返り）が出たら、その区間は研げている。返りは刃と直角方向に指を滑らせて確かめる。",
+    svg: `
+      <svg viewBox="0 0 400 230" role="img" aria-label="砥石に対する包丁の角度と、研げた印である返りの拡大図。">
+        <path d="M210 34 L 210 200" fill="none" stroke="${LIGHT}" stroke-width="1.5"/>
+        <text x="106" y="30" font-size="12" fill="${GRAY}" text-anchor="middle">研ぐ角度（断面）</text>
+        <text x="306" y="30" font-size="12" fill="${GRAY}" text-anchor="middle">刃先の拡大</text>
+
+        <rect x="20" y="140" width="176" height="22" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <text x="108" y="182" font-size="11" fill="${GRAY}" text-anchor="middle">砥石</text>
+
+        <path d="M38 138 L 172 98 L 182 116 L 50 140 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+
+        <path d="M38 138 L 150 138" fill="none" stroke="${ACCENT}" stroke-width="1.6" stroke-dasharray="4 3"/>
+        <path d="M112 138 A 74 74 0 0 0 108 118" fill="none" stroke="${ACCENT}" stroke-width="1.8"/>
+        <text x="130" y="132" font-size="12" fill="${ACCENT}" font-weight="700">約15度</text>
+
+        <path d="M176 104 L 176 138" fill="none" stroke="${GRAY}" stroke-width="1.4"/>
+        <path d="M176 104 L 172 112 M176 104 L 180 112 M176 138 L 172 130 M176 138 L 180 130"
+              fill="none" stroke="${GRAY}" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M148 84 L 172 100" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="112" y="80" font-size="11" fill="${GRAY}" text-anchor="middle">背の浮きは10円玉2枚分</text>
+
+        <path d="M240 92 L 348 92 L 382 128 L 240 156 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <text x="290" y="122" font-size="11" fill="${GRAY}" text-anchor="middle">刃の断面</text>
+
+        <path d="M382 128 C 391 131, 393 140, 386 146" fill="none" stroke="${ACCENT}" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M378 152 L 350 174" fill="none" stroke="${GRAY}" stroke-width="1.3"/>
+        <text x="322" y="188" font-size="13" fill="${ACCENT}" text-anchor="middle" font-weight="700">返り（バリ）</text>
+        <text x="306" y="208" font-size="11" fill="${GRAY}" text-anchor="middle">刃と直角に指を滑らせて確認</text>
+        <text x="306" y="226" font-size="11" fill="${ACCENT}" text-anchor="middle">刃に沿って滑らせない</text>
+      </svg>
+    `,
+  },
+
+  // 平造り
+  "sashimi-hira": {
+    title: "平造り",
+    caption: "包丁を立て、刃元を当てて手前に引きながら切り下ろす。厚さは7〜10mm。往復させず一度で切り離すと断面が潰れない。",
+    svg: `
+      <svg viewBox="0 0 400 210" role="img" aria-label="柵に対して包丁を垂直に立て、手前に引いて切る平造りの図。">
+        <path d="M60 104 L 300 104 L 300 150 L 60 150 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M60 104 C 120 96, 240 96, 300 104" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <text x="180" y="172" font-size="11" fill="${GRAY}" text-anchor="middle">柵（皮を引いた身）</text>
+
+        <path d="M96 110 L 96 148 M132 110 L 132 148 M168 110 L 168 148"
+              fill="none" stroke="${LIGHT}" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+        <rect x="196" y="40" width="14" height="66" rx="2" fill="#ffffff" stroke="${INK}" stroke-width="2.2"/>
+        <rect x="194" y="22" width="18" height="20" rx="3" fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+        <path d="M196 106 L 203 118 L 210 106 Z" fill="#ffffff" stroke="${INK}" stroke-width="2" stroke-linejoin="round"/>
+
+        <path d="M232 74 L 232 130" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M232 130 L 227 118 M232 130 L 237 118" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="248" y="100" font-size="12" fill="${ACCENT}" font-weight="700">手前に引く</text>
+
+        <path d="M78 158 L 114 158" fill="none" stroke="${ACCENT}" stroke-width="1.6"/>
+        <path d="M78 154 L 78 162 M114 154 L 114 162" fill="none" stroke="${ACCENT}" stroke-width="1.6"/>
+        <text x="96" y="192" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">7〜10mm</text>
+
+        <text x="330" y="132" font-size="12" fill="${INK}" text-anchor="middle">包丁は</text>
+        <text x="330" y="150" font-size="12" fill="${INK}" text-anchor="middle">立てる</text>
+      </svg>
+    `,
+  },
+
+  // そぎ造り
+  "sashimi-sogi": {
+    title: "そぎ造り",
+    caption: "包丁を30〜45度ほど寝かせ、身の左端から手前に引いてそぐ。断面が広く取れるので、薄くても食べごたえが出る。締まった白身向き。",
+    svg: `
+      <svg viewBox="0 0 400 210" role="img" aria-label="柵に対して包丁を寝かせ、そぐように切るそぎ造りの断面図。">
+        <path d="M60 104 L 300 104 L 300 150 L 60 150 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M60 104 C 120 96, 240 96, 300 104" fill="none" stroke="${GRAY}" stroke-width="1.8"/>
+        <text x="180" y="172" font-size="11" fill="${GRAY}" text-anchor="middle">柵（皮を引いた身）</text>
+
+        <path d="M74 148 L 116 106 M108 148 L 150 106" fill="none" stroke="${LIGHT}" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+        <path d="M92 132 L 214 56 L 224 72 L 102 148 Z"
+              fill="#ffffff" stroke="${INK}" stroke-width="2.2" stroke-linejoin="round"/>
+        <rect x="212" y="46" width="34" height="18" rx="3" transform="rotate(-32 212 46)"
+              fill="#f0f0f0" stroke="${INK}" stroke-width="2"/>
+
+        <path d="M92 132 L 186 132" fill="none" stroke="${ACCENT}" stroke-width="1.6" stroke-dasharray="4 3"/>
+        <path d="M154 132 A 62 62 0 0 0 146 106" fill="none" stroke="${ACCENT}" stroke-width="1.8"/>
+        <text x="176" y="126" font-size="12" fill="${ACCENT}" font-weight="700">30〜45度</text>
+
+        <path d="M120 88 L 76 112" fill="none" stroke="${ACCENT}" stroke-width="2.5"/>
+        <path d="M76 112 L 88 110 M76 112 L 86 118" fill="none" stroke="${ACCENT}" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="126" y="80" font-size="12" fill="${ACCENT}" text-anchor="middle" font-weight="700">左端から手前へそぐ</text>
+
+        <text x="336" y="126" font-size="12" fill="${INK}" text-anchor="middle">包丁は</text>
+        <text x="336" y="144" font-size="12" fill="${INK}" text-anchor="middle">寝かせる</text>
+      </svg>
+    `,
+  },
 };
 
 module.exports = { FIGURES };
