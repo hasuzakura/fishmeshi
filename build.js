@@ -12,6 +12,24 @@ const SITE_NAME = "Fish Meshi";
 const OPERATOR_NAME = "藤原";
 const OUT_DIR = __dirname;
 
+// ロゴマーク。フォークとナイフの間を魚が泳ぐ横並びの構成。
+// 色は style.css の変数に任せている（カトラリー=currentColor / 魚=--accent / 目=--bg-2）ので、
+// ここに色をハードコードしないこと。index.html は手書きなので、変更したら向こうにも同じものを貼ること。
+const LOGO_MARK = `<svg class="brand-mark" viewBox="0 0 72 40" aria-hidden="true" focusable="false">
+        <g fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" opacity=".85">
+          <path d="M3.5 6 V14.5" /><path d="M8.5 6 V14.5" /><path d="M13.5 6 V14.5" />
+          <path d="M3.5 14.5 Q8.5 19.5 13.5 14.5" />
+          <path d="M8.5 17.5 V34" />
+          <path d="M59.5 6 C63.4 10 64.6 15 64.6 19.5 H59.5 Z" />
+          <path d="M62 19.5 V34" />
+        </g>
+        <g transform="translate(37 20)">
+          <path d="M-11 0 C-4 -10 10 -11 17.5 0 C10 11 -4 10 -11 0 Z" fill="var(--accent)" />
+          <path d="M-7 0 L-20 -8 L-20 8 Z" fill="var(--accent)" />
+          <circle cx="10.5" cy="-2.6" r="2.1" fill="var(--bg-2)" />
+        </g>
+      </svg>`;
+
 // Amazonアソシエイト・プログラムの規約で全ページへの掲載が義務づけられている表記
 const AMAZON_DISCLOSURE = `Amazonのアソシエイトとして、${SITE_NAME}は適格販売により収入を得ています。`;
 
@@ -46,13 +64,15 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
   <meta property="og:type" content="website">
   <meta property="og:url" content="${canonical}">
   <link rel="stylesheet" href="/style.css">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   ${ADSENSE_TAG}
   ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData)}</script>` : ""}
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="/">Fish<em>Meshi</em></a>
+      <a class="brand" href="/">${LOGO_MARK}<span class="brand-word">Fish<em>Meshi</em></span></a>
       <!-- 釣行記は更新頻度が低いのでグローバルナビには置かない。
            フッターと魚別ページからは辿れる。書き足すようになったらここに戻す。 -->
       <nav class="site-nav">
