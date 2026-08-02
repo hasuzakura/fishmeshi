@@ -53,10 +53,11 @@ function layout({ title, description, canonical, bodyHtml, structuredData, noind
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/">Fish<em>Meshi</em></a>
+      <!-- 釣行記は更新頻度が低いのでグローバルナビには置かない。
+           フッターと魚別ページからは辿れる。書き足すようになったらここに戻す。 -->
       <nav class="site-nav">
         <a href="/recipes/">レシピ</a>
         <a href="/guide/">解説</a>
-        <a href="/diary/">釣行記</a>
       </nav>
     </div>
   </header>
@@ -333,12 +334,13 @@ function buildDiaryPage(log) {
     </div>
     ${cookSection}
     ${guideSection}
+    ${FISHING_LOGS.length > 1 ? `
     <div class="detail-section">
       <h2>関連</h2>
       <div class="amazon-links">
         <a class="permalink" href="/diary/">他の釣行記を見る →</a>
       </div>
-    </div>
+    </div>` : ""}
   `;
 
   writeFile(`diary/${log.slug}/index.html`, layout({
